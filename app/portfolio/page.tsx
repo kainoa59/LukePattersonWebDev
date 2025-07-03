@@ -1,7 +1,5 @@
-// BASIC STYLING FOR THIS IS APPLIED THROUGHOUT ALL TSX FILES OTHER THAN HOME PAGE
-
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PageTransition from "@/components/PageTransition";
 import CoverPageTransition from "@/components/CoverPageTransition";
 import {
@@ -17,6 +15,15 @@ import {
 export default function PortfolioPage() {
   const [showCover, setShowCover] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  // refs for each video
+  const blockedRef = useRef<HTMLVideoElement>(null);
+  const finalRef = useRef<HTMLVideoElement>(null);
+
+  // Helper to check if screen is mobile
+  const isMobile = () =>
+    typeof window !== "undefined" && window.innerWidth < 640;
 
   useEffect(() => {
     // Trigger fade-in after mount
@@ -36,6 +43,30 @@ export default function PortfolioPage() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
+  // Pause and reset video on mouse leave (desktop only)
+  const handleMouseLeave = () => {
+    if (!isMobile()) {
+      if (hoveredIdx === 0 && blockedRef.current) {
+        blockedRef.current.pause();
+        blockedRef.current.currentTime = 0;
+      }
+      if (hoveredIdx === 1 && finalRef.current) {
+        finalRef.current.pause();
+        finalRef.current.currentTime = 0;
+      }
+      setHoveredIdx(null);
+    }
+  };
+
+  // Only enable hover on desktop
+  const handleMouseEnter = (idx: number) => {
+    if (!isMobile()) setHoveredIdx(idx);
+  };
+
+  // On mobile, always show both videos, no hover
+  const showBothVideos =
+    typeof window !== "undefined" && window.innerWidth < 640;
+
   return (
     <>
       <PageTransition />
@@ -49,12 +80,55 @@ export default function PortfolioPage() {
             transition: "opacity 1.5s cubic-bezier(.77,0,.18,1)",
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-15 lg:gap-20 p-10 md:p-15 lg:p-20  w-full">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 md:gap-5 lg:gap-7 p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 w-full">
             <Card>
               <CardHeader>
-                <CardTitle>C++ Robotics</CardTitle>
-                <CardDescription>first card description</CardDescription>
-                <CardAction>Action</CardAction>
+                <CardTitle className="justify-self-center mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl">C++ Robotics</CardTitle>
+                <div
+                  className="flex flex-col gap-3 md:gap-5 lg:gap-7 xl:gap-10 sm:flex-row px-4"
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {(showBothVideos ||
+                    hoveredIdx === null ||
+                    hoveredIdx === 0) && (
+                    <div
+                      className="w-full sm:w-1/2 transition-all duration-300"
+                      onMouseEnter={() => handleMouseEnter(0)}
+                    >
+                      <video
+                        ref={blockedRef}
+                        src="/videos/MutedBlocked.mp4"
+                        controls
+                        muted
+                        autoPlay={false}
+                        loop={false}
+                        className="w-full max-w-80 h-auto rounded-lg justify-self-center"
+                      />
+                      <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">Line Following and Object Avoidance</CardDescription>
+                    </div>
+                  )}
+                  {(showBothVideos ||
+                    hoveredIdx === null ||
+                    hoveredIdx === 1) && (
+                    <div
+                      className="w-full sm:w-1/2 transition-all duration-300"
+                      onMouseEnter={() => handleMouseEnter(1)}
+                    >
+                      <video
+                        ref={finalRef}
+                        src="/videos/MutedFinal.mp4"
+                        controls
+                        controlsList="novolume"
+                        muted
+                        autoPlay={false}
+                        loop={false}
+                        className="w-full max-w-80 h-auto rounded-lg justify-self-center"
+                      />
+                      <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">Maze Solving and Object Collection</CardDescription>
+                    </div>
+                  )}
+                </div>
+                {/* <CardAction>Action</CardAction> */}
               </CardHeader>
               <CardContent>
                 <p>content for card one</p>

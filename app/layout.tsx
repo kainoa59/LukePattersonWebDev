@@ -25,9 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} flex min-h-full flex-col bg-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} flex justify items-center min-h-full flex-col bg-white`}>
         <Navbar />
-        <main className="flex-grow container mx-auto px-4">{children}</main>
+        <main className="flex-grow w-full px-8 sm:px-12 md:px-20 lg:px-24 xl:px-28 2xl:px-32">{children}</main>
       </body>
     </html>
   );
