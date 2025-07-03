@@ -74,13 +74,15 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[60vh] bg-[#7b8f72] rounded-b-xl flex items-center justify-center mt-12"
-          style={{
-            opacity: fadeIn ? 1 : 0,
-            transition: "opacity 1.5s cubic-bezier(.77,0,.18,1)",
-          }}
+          className="w-full min-h-[60vh] bg-[#7b8f72] rounded-b-xl flex items-center justify-center mt-6"
         >
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 md:gap-5 lg:gap-7 p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 w-full">
+          <div
+            style={{
+              opacity: fadeIn ? 1 : 0,
+              transition: "opacity 1.5s cubic-bezier(.77,0,.18,1)",
+            }}
+            className="grid grid-cols-1 xl:grid-cols-2 gap-3 md:gap-5 lg:gap-7 p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 w-full"
+          >
             <Card>
               <CardHeader>
                 <CardTitle className="justify-self-center mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl">C++ Robotics</CardTitle>
@@ -92,9 +94,9 @@ export default function PortfolioPage() {
                     hoveredIdx === null ||
                     hoveredIdx === 0) && (
                     <div
-                      className="w-full sm:w-1/2 transition-all duration-300"
-                      onMouseEnter={() => handleMouseEnter(0)}
-                    >
+                        className={`transition-all duration-300 flex flex-col items-center
+                        ${hoveredIdx === 0 && !showBothVideos ? "mx-auto sm:w-1/2" : "w-full sm:w-1/2"}`}
+                        >
                       <video
                         ref={blockedRef}
                         src="/videos/MutedBlocked.mp4"
@@ -103,6 +105,7 @@ export default function PortfolioPage() {
                         autoPlay={false}
                         loop={false}
                         className="w-full max-w-80 h-auto rounded-lg justify-self-center"
+                        onMouseEnter={() => handleMouseEnter(0)}
                       />
                       <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">Line Following and Object Avoidance</CardDescription>
                     </div>
@@ -111,9 +114,9 @@ export default function PortfolioPage() {
                     hoveredIdx === null ||
                     hoveredIdx === 1) && (
                     <div
-                      className="w-full sm:w-1/2 transition-all duration-300"
-                      onMouseEnter={() => handleMouseEnter(1)}
-                    >
+                        className={`transition-all duration-300 flex flex-col items-center
+                        ${hoveredIdx === 1 && !showBothVideos ? "mx-auto sm:w-1/2" : "w-full sm:w-1/2"}`}
+                        >
                       <video
                         ref={finalRef}
                         src="/videos/MutedFinal.mp4"
@@ -123,6 +126,7 @@ export default function PortfolioPage() {
                         autoPlay={false}
                         loop={false}
                         className="w-full max-w-80 h-auto rounded-lg justify-self-center"
+                        onMouseEnter={() => handleMouseEnter(1)}
                       />
                       <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">Maze Solving and Object Collection</CardDescription>
                     </div>

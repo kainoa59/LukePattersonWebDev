@@ -164,7 +164,7 @@ export default function Home() {
   return (
     <>
       <PageTransition />
-      <div>
+      <div className="px-8 sm:px-12 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
         {/* three-column section */}
         <div className="relative flex w-full h-[70vh] max-h-[70vh] mx-auto mt-12 items-stretch">
           {/* left column */}
