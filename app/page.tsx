@@ -59,7 +59,7 @@ export default function Home() {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const link = target.closest('.navbar-link') as HTMLAnchorElement | null;
+      const link = target.closest(".navbar-link") as HTMLAnchorElement | null;
       if (link) {
         e.preventDefault();
         const href = link.getAttribute("href");
@@ -95,7 +95,8 @@ export default function Home() {
   // how much to fade based on scroll
   const fade = Math.min(scrollY / 200, 1);
   // progress for bar and green section
-  const barAndGreenProgress = scrollRange > 0 ? Math.min(scrollY / scrollRange, 1) : 0;
+  const barAndGreenProgress =
+    scrollRange > 0 ? Math.min(scrollY / scrollRange, 1) : 0;
 
   // green cover style for each phase
   let greenCoverStyle: React.CSSProperties = {};
@@ -170,7 +171,12 @@ export default function Home() {
           {/* left column */}
           <div
             className="w-1/3 text-right pr-4 z-20 flex flex-col justify-center items-center"
-            style={{ opacity: 1 - fade, transition: "opacity 0.2s" }}
+            style={{
+              opacity: 1 - fade,
+              transition:
+                "opacity 0.3s, transform 0.3s cubic-belzier(.77,0,.18,1)",
+              transform: `translateX(-${barAndGreenProgress * 125}%)`,
+            }}
           >
             <h1 className="pb-4 ml-48 text-7xl font-extrabold text-center whitespace-nowrap text-outline-white">
               Luke Patterson
@@ -206,7 +212,12 @@ export default function Home() {
           {/* right column */}
           <div
             className="w-1/3 text-left pl-4 z-20 flex items-center"
-            style={{ opacity: 1 - fade, transition: "opacity 0.2s" }}
+            style={{
+              opacity: 1 - fade,
+              transition:
+                "opacity 0.3s, transform 0.3s cubic-belzier(.77,0,.18,1)",
+              transform: `translateX(${barAndGreenProgress * 125}%)`,
+            }}
           >
             <p>
               hello there is gonna be random text here i am not sure what i am

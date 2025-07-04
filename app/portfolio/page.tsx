@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import PageTransition from "@/components/PageTransition";
 import CoverPageTransition from "@/components/CoverPageTransition";
 import {
@@ -85,18 +86,24 @@ export default function PortfolioPage() {
           >
             <Card>
               <CardHeader>
-                <CardTitle className="justify-self-center mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl">C++ Robotics</CardTitle>
+                <CardTitle className="mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
+                  C++ Robotics
+                </CardTitle>
                 <div
-                  className="flex flex-col gap-3 md:gap-5 lg:gap-7 xl:gap-10 sm:flex-row px-4"
+                  className="flex flex-col xl:min-h-100 xl:max-h-150 gap-3 md:gap-5 lg:gap-7 xl:gap-10 sm:flex-row px-4"
                   onMouseLeave={handleMouseLeave}
                 >
                   {(showBothVideos ||
                     hoveredIdx === null ||
                     hoveredIdx === 0) && (
                     <div
-                        className={`transition-all duration-300 flex flex-col items-center
-                        ${hoveredIdx === 0 && !showBothVideos ? "mx-auto sm:w-1/2" : "w-full sm:w-1/2"}`}
-                        >
+                      className={`transition-all duration-300 flex flex-col items-center
+                        ${
+                          hoveredIdx === 0 && !showBothVideos
+                            ? "mx-auto sm:w-1/2"
+                            : "w-full sm:w-1/2"
+                        }`}
+                    >
                       <video
                         ref={blockedRef}
                         src="/videos/MutedBlocked.mp4"
@@ -107,16 +114,22 @@ export default function PortfolioPage() {
                         className="w-full max-w-80 h-auto rounded-lg justify-self-center"
                         onMouseEnter={() => handleMouseEnter(0)}
                       />
-                      <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">Line Following and Object Avoidance</CardDescription>
+                      <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                        Line Following and Object Avoidance
+                      </CardDescription>
                     </div>
                   )}
                   {(showBothVideos ||
                     hoveredIdx === null ||
                     hoveredIdx === 1) && (
                     <div
-                        className={`transition-all duration-300 flex flex-col items-center
-                        ${hoveredIdx === 1 && !showBothVideos ? "mx-auto sm:w-1/2" : "w-full sm:w-1/2"}`}
-                        >
+                      className={`transition-all duration-300 flex flex-col items-center
+                        ${
+                          hoveredIdx === 1 && !showBothVideos
+                            ? "mx-auto sm:w-1/2"
+                            : "w-full sm:w-1/2"
+                        }`}
+                    >
                       <video
                         ref={finalRef}
                         src="/videos/MutedFinal.mp4"
@@ -128,31 +141,51 @@ export default function PortfolioPage() {
                         className="w-full max-w-80 h-auto rounded-lg justify-self-center"
                         onMouseEnter={() => handleMouseEnter(1)}
                       />
-                      <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">Maze Solving and Object Collection</CardDescription>
+                      <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                        Maze Solving and Object Collection
+                      </CardDescription>
                     </div>
                   )}
                 </div>
                 {/* <CardAction>Action</CardAction> */}
               </CardHeader>
               <CardContent>
-                <p>content for card one</p>
+                <p className="indent-8 text-justify px-4 py-4 -mt-4 border-y border-zinc-900">
+                  Watch the Pololu 3pi+ 32U4 robot in the first video as it uses
+                  lidar sensors to follow a path, and sonar to detact and avoid
+                  obstacles. The second video demonstates an advanced version of
+                  this algorithm. Here the robot uses sonar to maintain a
+                  threshold distance from the walls, odometric functions to
+                  determine distance traveled by each wheel, and lidar to detect
+                  and collect objects. The robot is able to solve a maze and
+                  collect objects with a smooth correction behavior supported by
+                  its PID controller.
+                </p>
               </CardContent>
-              <CardFooter>
-                <p>footer one</p>
-              </CardFooter>
             </Card>
             <Card>
-              <CardHeader>
-                <CardTitle>Web Development</CardTitle>
-                <CardDescription>second card description</CardDescription>
-                <CardAction>Action</CardAction>
+              <CardHeader className="justify-center">
+                <CardTitle className="mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
+                  Web Development
+                </CardTitle>
+                  <div className="relative w-full max-w-xl aspect-auto">
+                    <Image
+                      src="/images/DahliaImage.png"
+                      alt="Dahlia Image"
+                      width={900}
+                      height={900}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                  second card description
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <p>content for card two</p>
+                <p className="indent-8 text-justify px-4 py-4 -mt-4 border-y border-zinc-900">
+                  content for card two
+                </p>
               </CardContent>
-              <CardFooter>
-                <p>footer two</p>
-              </CardFooter>
             </Card>
             <Card>
               <CardHeader>
