@@ -33,7 +33,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[60vh] bg-[#7b8f72] rounded-b-xl flex flex-col items-center justify-center p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32"
+          className="w-full min-h-[60vh] bg-[#7b8f72] flex flex-col gap-3 items-center justify-center p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32"
           style={{
             opacity: fadeIn ? 1 : 0,
             // fade-in effect
@@ -47,44 +47,52 @@ export default function PortfolioPage() {
           <h1 className="w-full text-3xl font-bold text-white text-align-left">
             Profile:
           </h1>
-          <p className="w-full text-white px-6 xl:px-24">
-            Full-stack web developer and Honors Computer Science graduate with
-            hands-on experience in React (Next.js), Node.js, Tailwind/Bootstrap,
-            and various SQL and NoSQL DBMS. Over two years experience in
-            full-stack web evelopment, and two years of experience applying
-            mathematical analysis to software projects in C++, Java, and Python.
-            Strong communicator and team player with a background in leadership,
-            logistics, and customer interactions. Able to quickly regain fluency
-            in topics after focusing on other technologies.
-            {/* I come from a family
+          <p className="flex w-full text-white px-6 xl:px-24">
+            <span className="block border-l-2 pl-12 border-white">
+              Full-stack web developer and Honors Computer Science graduate with
+              hands-on experience in React (Next.js), Node.js,
+              Tailwind/Bootstrap, and various SQL and NoSQL DBMS. Over two years
+              experience in full-stack web evelopment, and two years of
+              experience applying mathematical analysis to software projects in
+              C++, Java, and Python. Strong communicator and team player with a
+              background in leadership, logistics, and customer interactions.
+              Able to quickly regain fluency in topics after focusing on other
+              technologies.
+              {/* I come from a family
             who loves to travel and have done so extensively — this
             has helped me thrive in dynamic, fast-changing environments and
             communicate cross-culturally. */}
+            </span>
           </p>
           <h1 className="w-full text-3xl font-bold text-white text-align-left">
             Education:
           </h1>
-          <p className="text-white w-full px-6 xl:px-24">
-            - B.S. in Computer Science, Honors Program (Cum Laude), San Diego
-            State University, Fall 2024
-            <br />
-            - Associates in Computer Science, Mathematics, and Natural Sciences,
-            President&apos;s List, Grossmont Community College, Spring 2023
-            <br />
-            - Certificate of Web Development, UCSD Extension, Summer 2022
-            <br />- Cummulative GPA:{" "}
-            <span className="font-semibold"> 3.62 </span>
-          </p>
+          <div className="flex text-white w-full px-6 xl:px-24">
+            <div className="border-l-2 pl-12 border-white">
+              - B.S. in Computer Science, Honors Program (Cum Laude), San Diego
+              State University, Fall 2024
+              <br />
+              - Associates in Computer Science, Mathematics, and Natural
+              Sciences, President&apos;s List, Grossmont Community College,
+              Spring 2023
+              <br />
+              - Certificate of Web Development, UCSD Extension, Summer 2022
+              <br />- Cummulative GPA:{" "}
+              <span className="font-semibold"> 3.62 </span>
+            </div>
+          </div>
           <h1 className="w-full text-3xl font-bold text-white text-align-left">
             Skills & Achievements:
           </h1>
-          <ul className="list-disc list-inside text-white">
-            <li>React, Node.js, JavaScript/TypeScript</li>
-            <li>Tailwind CSS, Boostrap, Shadcn, Vanilla CSS and HTML</li>
-            <li>Git & GitHub file and collaboration management</li>
-            <li>MySQL, Firebase, and MongoDB</li>
-            <li>Linux system administration</li>
-            <li>Python 3.8+ (basic)</li>
+          <ul className="flex list-disc list-inside w-full px-6 xl:px-24 text-white">
+            <span className="block border-l-2 pl-12 border-white">
+              <li>React, Node.js, JavaScript/TypeScript</li>
+              <li>Tailwind CSS, Boostrap, Shadcn, Vanilla CSS and HTML</li>
+              <li>Git & GitHub file and collaboration management</li>
+              <li>MySQL, Firebase, and MongoDB</li>
+              <li>Linux system administration</li>
+              <li>Python 3.8+ (basic)</li>
+            </span>
           </ul>
           <h1 className="w-full text-3xl font-bold text-white text-align-left">
             Professional Experience:
@@ -94,7 +102,7 @@ export default function PortfolioPage() {
             <strong>Personal Portfolio Website</strong> <br />
             <em>Front-End Web Development Project (2024)</em>
           </p>
-          <ul className="list-disc list-inside text-white mt-2 space-y-2">
+          <ul className="list-disc list-inside text-white w-full px-6 xl:px-24 mt-2 space-y-2">
             <li>
               Designed and developed this personal portfolio using React.js,
               Next.js, and Tailwind CSS to showcase skills, projects, and
@@ -115,11 +123,11 @@ export default function PortfolioPage() {
             </li>
           </ul>
 
-          <p className="text-white mt-6">
+          <p className="text-white text-center mt-6">
             <strong>Tealium Hackathon – 2nd Place Finish</strong> <br />
             <em>La Jolla, CA (Summer 2022)</em>
           </p>
-          <ul className="list-disc list-inside text-white mt-2 space-y-2">
+          <ul className="list-disc list-inside text-white w-full px-6 xl:px-24 mt-2 space-y-2">
             <li>
               Collaborated in a team of three to design a product using
               Tealium’s Customer Data Hub within a 48-hour window.
@@ -140,12 +148,12 @@ export default function PortfolioPage() {
             </li>
           </ul>
 
-          <p className="text-white mt-6">
+          <p className="text-white text-center mt-6">
             <strong>Freelance Web Developer – Dahlia Coastal Living</strong>{" "}
             <br />
             <em>San Diego, CA (Nov 2024 - Present)</em>
           </p>
-          <ul className="list-disc list-inside text-white mt-2 space-y-2">
+          <ul className="list-disc list-inside text-white w-full px-6 xl:px-24 mt-2 space-y-2 pb-36">
             <li>
               Built and deployed a responsive React and Bootstrap website for a
               local property management company to showcase duplexes, support

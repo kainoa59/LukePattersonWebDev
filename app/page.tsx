@@ -72,7 +72,7 @@ export default function Home() {
     return () => document.removeEventListener("click", handleClick);
   }, []);
 
-  // scroll-based fade and progress (optional, can remove if not needed)
+  // scroll-based fade and progress
   const [scrollY, setScrollY] = useState(0);
   const [scrollRange, setScrollRange] = useState(0);
 
