@@ -110,10 +110,12 @@ export default function PortfolioPage() {
             }}
             className="grid grid-cols-1 xl:grid-cols-2 gap-3 md:gap-5 lg:gap-7 p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32 w-full"
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  C++ Robotics
+            <Card className="shadow-zinc-950/80 shadow-2xl">
+              <CardHeader className="">
+                <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
+                  <span className="inline-block pb-4 px-20 border-b">
+                    C++ Robotics
+                  </span>
                 </CardTitle>
                 <div
                   className="flex flex-col xl:min-h-100 xl:max-h-150 gap-3 md:gap-5 lg:gap-7 xl:gap-10 sm:flex-row px-4"
@@ -123,12 +125,7 @@ export default function PortfolioPage() {
                     hoveredIdx === null ||
                     hoveredIdx === 0) && (
                     <div
-                      className={`transition-all duration-300 flex flex-col items-center
-                        ${
-                          hoveredIdx === 0 && !showBothVideos
-                            ? "mx-auto sm:w-1/2"
-                            : "w-full sm:w-1/2"
-                        }`}
+                      className={`transition-all duration-300 flex flex-col items-center sm:w-1/2 w-full max-w-80 mx-auto`}
                     >
                       <video
                         ref={blockedRef}
@@ -137,7 +134,7 @@ export default function PortfolioPage() {
                         muted
                         autoPlay={false}
                         loop={false}
-                        className="w-full max-w-80 h-auto rounded-lg justify-self-center"
+                        className="w-full h-auto rounded-lg justify-self-center shadow-zinc-950/80 shadow-lg"
                         onMouseEnter={() => handleMouseEnter(0)}
                       />
                       <CardDescription className="mt-6 mb-16 sm:mb-6 pt-2 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
@@ -149,12 +146,7 @@ export default function PortfolioPage() {
                     hoveredIdx === null ||
                     hoveredIdx === 1) && (
                     <div
-                      className={`transition-all duration-300 flex flex-col items-center
-                        ${
-                          hoveredIdx === 1 && !showBothVideos
-                            ? "mx-auto sm:w-1/2"
-                            : "w-full sm:w-1/2"
-                        }`}
+                      className={`transition-all duration-300 flex flex-col items-center w-full sm:w-1/2 max-w-80 mx-auto`}
                     >
                       <video
                         ref={finalRef}
@@ -164,7 +156,7 @@ export default function PortfolioPage() {
                         muted
                         autoPlay={false}
                         loop={false}
-                        className="w-full max-w-80 h-auto rounded-lg justify-self-center"
+                        className="w-full h-auto rounded-lg justify-self-center shadow-zinc-950/80 shadow-lg"
                         onMouseEnter={() => handleMouseEnter(1)}
                       />
                       <CardDescription className="mt-6 mb-16 sm:mb-6 pt-2 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
@@ -175,8 +167,8 @@ export default function PortfolioPage() {
                 </div>
                 {/* <CardAction>Action</CardAction> */}
               </CardHeader>
-              <CardContent>
-                <p className="indent-8 text-justify px-4 py-4 -mt-4 border-y border-zinc-900">
+              <CardContent className="mt-auto">
+                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Watch the Pololu 3pi+32U4 robot in the first video as it uses
                   lidar to detect color changes beneath it, and sonar to sense
                   and avoid obstacles. The second video demonstates an advanced
@@ -191,20 +183,22 @@ export default function PortfolioPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
-                <CardTitle className="mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  Web Development
+                <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
+                  <span className="inline-block pb-4 px-20 border-b">
+                    Web Development
+                  </span>
                 </CardTitle>
                 <div
-                  className="relative w-full  min-w-70 md:min-w-130"
+                  className="relative w-full min-w-70 md:min-w-130"
                   style={{ height: videoHeight ? `${videoHeight}px` : "200px" }}
                 >
                   <Image
                     src="/images/DahliaImage.png"
                     alt="Dahlia Image"
                     fill
-                    className="object-contain"
+                    className="object-contain shadow-zinc-950/80 shadow-lg"
                     sizes="1280px"
                   />
                 </div>
@@ -219,7 +213,7 @@ export default function PortfolioPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="indent-8 text-justify px-4 py-4 -mt-4 border-y border-zinc-900">
+                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Explore DahliaCoastalLivingInIB.com, a custom-built site
                   showcasing coastal-inspired duplexes and amenities. It
                   combines responsive design, Bootstrap components, React
@@ -234,18 +228,19 @@ export default function PortfolioPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
-                <CardTitle className="mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  Virtualization
+                <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
+                  <span className="inline-block pb-4 px-20 border-b">
+                    Virtualization
+                  </span>
                 </CardTitle>
-                <div className="relative w-full min-w-70 md:min-w-130 aspect-[4/3]"
-                >
+                <div className="relative w-full min-w-70 md:min-w-130 aspect-[4/3]">
                   <Image
                     src="/images/FreeBSDImage.png"
                     alt="FreeBSD Image"
                     fill
-                    className="object-contain"
+                    className="object-contain w-full max-w-100 md:max-w-500 lg:max-w-200 xl:max-w-100 2xl:max-w-150 align-middle justify-self-center shadow-zinc-950/80 shadow-lg"
                     sizes="1280px"
                   />
                 </div>
@@ -254,7 +249,7 @@ export default function PortfolioPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="indent-8 text-justify px-4 py-4 -mt-4 border-y border-zinc-900">
+                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Here I built and managed a suite of virtual machines across
                   OpenBSD, FreeBSD, Rocky Linux, Ubuntu, and Solaris
                   (OpenIndiana) using VMware Fusion. The labs focused on
@@ -271,10 +266,12 @@ export default function PortfolioPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
-                <CardTitle className="mt-2 mb-4 sm:mb-6 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  3D Game Programming
+                <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
+                  <span className="inline-block pb-4 px-20 border-b">
+                    3D Game Programming
+                  </span>
                 </CardTitle>
                 <div
                   className="relative w-full min-w-70 md:min-w-130 aspect-[4/3]"
@@ -298,7 +295,7 @@ export default function PortfolioPage() {
                       src="/images/3DGameImage.png"
                       alt="3DGame Image"
                       fill
-                      className="object-contain"
+                      className="object-contain w-full max-w-100 md:max-w-500 lg:max-w-200 xl:max-w-100 2xl:max-w-150 align-middle justify-self-center shadow-zinc-950/80 shadow-lg"
                       sizes="1280px"
                     />
                   ) : (
@@ -310,8 +307,7 @@ export default function PortfolioPage() {
                       autoPlay
                       loop
                       playsInline
-                      className="object-contain w-full h-full"
-                      style={{ position: "absolute", top: 0, left: 0 }}
+                      className="object-contain w-full max-w-100 md:max-w-500 lg:max-w-200 xl:max-w-100 2xl:max-w-150 align-middle justify-self-center shadow-zinc-950/80 shadow-lg"
                     />
                   )}
                 </div>
@@ -320,7 +316,7 @@ export default function PortfolioPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="indent-8 text-justify px-4 py-4 -mt-4 border-y border-zinc-900">
+                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   In this project, my team developed a 3D physics-based ball
                   game using Unity and C#. Players navigate a rolling ball
                   through a series of obstacles and platforms to collect items
@@ -332,7 +328,8 @@ export default function PortfolioPage() {
                   project, we used GitHub for version control, regularly merging
                   branches, resolving conflicts, and coordinating feature
                   development across the team. This experience strengthened my
-                  grasp of debugging, version control, and game-based physics models.
+                  grasp of debugging, version control, and game-based physics
+                  models.
                 </p>
               </CardContent>
             </Card>
