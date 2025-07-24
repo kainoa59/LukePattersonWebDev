@@ -8,7 +8,7 @@ import CoverPageTransition from "@/components/CoverPageTransition";
 export default function PortfolioPage() {
   const [showCover, setShowCover] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ subject: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -28,14 +28,32 @@ export default function PortfolioPage() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // add actual submission logic here
+    try {
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Failed to send email. Please try again.");
+      }
+    } catch (err) {
+      alert(`Error sending email: ${err}. Please try again.`);
+    }
   };
 
   return (
@@ -53,18 +71,20 @@ export default function PortfolioPage() {
         >
           <h1 className="text-3xl font-bold text-white p-8">Contact</h1>
           {submitted ? (
-            <p className="text-white text-lg mt-4">Thank you for reaching out! I will get back to you soon.</p>
+            <p className="text-white text-lg mt-4">
+              Thank you for reaching out! I will get back to you soon.
+            </p>
           ) : (
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-4 bg-white/80 rounded-lg p-8 shadow-lg min-w-[300px] w-full max-w-3xl"
             >
               <label className="flex flex-col font-semibold text-[#7b8f72]">
-                Name
+                Subject
                 <input
                   type="text"
-                  name="name"
-                  value={form.name}
+                  name="subject"
+                  value={form.subject}
                   onChange={handleChange}
                   required
                   className="mt-1 p-2 rounded border border-[#a3b18a]/40 focus:outline-none"
