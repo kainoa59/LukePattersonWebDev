@@ -178,11 +178,17 @@ export default function Home() {
               transform: `translateX(-${barAndGreenProgress * 125}%)`,
             }}
           >
-            <h1 className="pb-4 ml-48 text-7xl font-extrabold text-center whitespace-nowrap text-outline-white">
+            <h1
+              className="pb-4 ml-48 text-7xl tracking-wide font-extrabold text-center whitespace-nowrap"
+              style={{ textShadow: "0 4px 12px #7b8f72, 0 0px 3px #7b8f72" }}
+            >
               Luke Patterson
             </h1>
-            <h3 className="pt-4 ml-48 text-4xl font-semibold text-center whitespace-nowrap text-outline-white">
-              full stack web developer
+            <h3
+              className="pt-4 ml-48 text-4xl tracking-wide font-semibold text-center whitespace-nowrap"
+              style={{ textShadow: "0 3px 10px #7b8f72, 0 0px 2px #7b8f72" }}
+            >
+              Full stack web developer
             </h3>
           </div>
           {/* center column */}
@@ -219,9 +225,13 @@ export default function Home() {
               transform: `translateX(${barAndGreenProgress * 125}%)`,
             }}
           >
-            <p>
-              hello there is gonna be random text here i am not sure what i am
-              going to put yet
+            <p
+              className="text-xl tracking-wide font-normal text-center"
+              style={{ textShadow: "0 2px 8px #7b8f72, 0 0px 1px #7b8f72" }}
+            >
+              Bachelor of Science in Computer Sience, SDSU
+              <br />
+              Web Developer for Dahlia Coastal Living Properties
             </p>
           </div>
         </div>

@@ -55,7 +55,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[60vh] bg-[#7b8f72] flex flex-col gap-3 items-center justify-center p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32"
+          className="w-full min-h-[60vh] bg-[#7b8f72] flex flex-col gap-3 items-center justify-center p-2 sm:p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32"
           style={{
             opacity: fadeIn ? 1 : 0,
             // fade-in effect
@@ -63,27 +63,27 @@ export default function PortfolioPage() {
           }}
         >
           <div
-            className="top-section flex flex-col gap-3 items-center justify-center"
+            className="top-section flex flex-col gap-1 md:gap-3 items-center justify-center"
             style={{
               opacity: topSectionOpacity,
               transition: "opacity 0.5s, transform 0.3s",
               transform: `translateX(${(1 - topSectionOpacity) * -500}px)`,
             }}
           >
-            <h1 className="text-5xl font-extrabold text-white text-center">
+            <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white text-center">
               Luke Patterson
             </h1>
-            <h1 className="text-2xl font-semibold text-white">
-                San Diego, CA&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;LukePattersonWebDev@gmail.com
+            <h1 className="text-[0.8rem] sm:text-md lg:text-2xl font-semibold text-white">
+                San Diego, CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
             </h1>
 
-            <hr className="my-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-3xl" />
+            <hr className="mt-2 md:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] md:max-w-3xl" />
 
-            <h1 className="w-full text-3xl font-bold text-white text-align-left pl-12">
+            <h1 className="w-full text-lg font-bold text-white text-align-left pl-4 sm:pl-12">
               Profile:
             </h1>
-            <p className="flex w-full text-white px-6 xl:px-24">
-              <span className="block border-l-2 pl-12 border-[#a3b18a]/40">
+            <p className="flex w-full text-white text-[0.5rem] md:text-base px-2 md:px-6 xl:px-24">
+              <span className="block border-l-2 pl-6 md:pl-12 border-[#a3b18a]/40">
                 Full-stack web developer and Honors Computer Science graduate
                 with hands-on experience in React (Next.js), Node.js,
                 Tailwind/Bootstrap, and various SQL and NoSQL DBMS. Over two
@@ -99,11 +99,11 @@ export default function PortfolioPage() {
             communicate cross-culturally. */}
               </span>
             </p>
-            <h1 className="w-full text-3xl font-bold text-white text-align-left pl-12">
+            <h1 className="w-full text-lg font-bold text-white text-align-left pl-4 sm:pl-12">
               Education:
             </h1>
-            <div className="flex text-white w-full px-6 xl:px-24">
-              <div className="border-l-2 pl-12 border-[#a3b18a]/40">
+            <div className="flex w-full text-white text-[0.5rem] md:text-base px-2 md:px-6 xl:px-24">
+              <div className="border-l-2 pl:6 md:pl-12 border-[#a3b18a]/40">
                 - B.S. in Computer Science, Honors Program (Cum Laude), San
                 Diego State University, Fall 2024
                 <br />
@@ -116,11 +116,11 @@ export default function PortfolioPage() {
                 <span className="font-semibold"> 3.62 </span>
               </div>
             </div>
-            <h1 className="w-full text-3xl font-bold text-white text-align-left pl-12">
+            <h1 className="w-full text-lg font-bold text-white text-align-left pl-4 sm:pl-12">
               Skills & Achievements:
             </h1>
             <ul className="flex list-disc list-inside w-full px-6 xl:px-24 text-white">
-              <span className="block border-l-2 pl-12 border-[#a3b18a]/40">
+              <span className="block border-l-2 pl-6 md:pl-12 border-[#a3b18a]/40">
                 <li>React, Node.js, JavaScript/TypeScript</li>
                 <li>Tailwind CSS, Boostrap, Shadcn, Vanilla CSS and HTML</li>
                 <li>Git & GitHub file and collaboration management</li>

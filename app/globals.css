@@ -18,7 +18,7 @@ main {
   padding-top: var(--navbar-height, 64px);
 }
 
-.text-outline-white {
+/* .text-outline-white {
   text-shadow:
     1px 1px 0 #7b8f72,
     -1px 1px 0 #7b8f72,
@@ -28,7 +28,7 @@ main {
     0px 1px 0 #7b8f72,
     -1px 0px 0 #7b8f72,
     0px -1px 0 #7b8f72;
-}
+} */
 
 .fade-edges::before {
   content: "";
