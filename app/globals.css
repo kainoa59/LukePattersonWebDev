@@ -18,6 +18,12 @@ main {
   padding-top: var(--navbar-height, 64px);
 }
 
+@media(max-width: 767px){
+  main {
+    padding-top: 35px;
+  }
+}
+
 /* .text-outline-white {
   text-shadow:
     1px 1px 0 #7b8f72,

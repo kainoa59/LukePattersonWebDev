@@ -55,7 +55,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[60vh] bg-[#7b8f72] flex flex-col gap-3 items-center justify-center p-2 sm:p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32"
+          className="w-full min-h-[200vh] bg-[#7b8f72] flex flex-col items-center justify-between p-2 sm:p-6 "
           style={{
             opacity: fadeIn ? 1 : 0,
             // fade-in effect
@@ -63,76 +63,84 @@ export default function PortfolioPage() {
           }}
         >
           <div
-            className="top-section flex flex-col gap-1 md:gap-3 items-center justify-center"
+            className="top-section min-h-[80vh] md:max-h-[60vh] flex flex-col gap-1 md:gap-3 items-center justify-start"
             style={{
               opacity: topSectionOpacity,
               transition: "opacity 0.5s, transform 0.3s",
               transform: `translateX(${(1 - topSectionOpacity) * -500}px)`,
             }}
           >
-            <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white text-center">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center mt-6">
               Luke Patterson
             </h1>
-            <h1 className="text-[0.8rem] sm:text-md lg:text-2xl font-semibold text-white">
-                San Diego, CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
+            <h1 className="mb-4 text-[0.8rem] sm:text-lg lg:text-2xl font-semibold text-white">
+              San Diego,
+              CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
             </h1>
 
-            <hr className="mt-2 md:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] md:max-w-3xl" />
+            <div className="flex-1 flex flex-col gap-1 md:gap-3 items-center justify-center">
+              <hr className="lg:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
-            <h1 className="w-full text-lg font-bold text-white text-align-left pl-4 sm:pl-12">
-              Profile:
-            </h1>
-            <p className="flex w-full text-white text-[0.5rem] md:text-base px-2 md:px-6 xl:px-24">
-              <span className="block border-l-2 pl-6 md:pl-12 border-[#a3b18a]/40">
-                Full-stack web developer and Honors Computer Science graduate
-                with hands-on experience in React (Next.js), Node.js,
-                Tailwind/Bootstrap, and various SQL and NoSQL DBMS. Over two
-                years experience in full-stack web evelopment, and two years of
-                experience applying mathematical analysis to software projects
-                in C++, Java, and Python. Strong communicator and team player
-                with a background in leadership, logistics, and customer
-                interactions. Able to quickly regain fluency in topics after
-                focusing on other technologies.
-                {/* I come from a family
+              <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
+                Profile:
+              </h1>
+              <p className="flex w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] px-2 md:px-12 xl:px-24">
+                <span className="block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
+                  Full-stack web developer and Honors Computer Science graduate
+                  with hands-on experience in React (Next.js), Node.js,
+                  Tailwind/Bootstrap, and various SQL and NoSQL DBMS. Over two
+                  years experience in full-stack web evelopment, and two years
+                  of experience applying mathematical analysis to software
+                  projects in C++, Java, and Python. Strong communicator and
+                  team player with a background in leadership, logistics, and
+                  customer interactions. Able to quickly regain fluency in
+                  topics after focusing on other technologies.
+                  {/* I come from a family
             who loves to travel and have done so extensively — this
             has helped me thrive in dynamic, fast-changing environments and
             communicate cross-culturally. */}
-              </span>
-            </p>
-            <h1 className="w-full text-lg font-bold text-white text-align-left pl-4 sm:pl-12">
-              Education:
-            </h1>
-            <div className="flex w-full text-white text-[0.5rem] md:text-base px-2 md:px-6 xl:px-24">
-              <div className="border-l-2 pl:6 md:pl-12 border-[#a3b18a]/40">
-                - B.S. in Computer Science, Honors Program (Cum Laude), San
-                Diego State University, Fall 2024
-                <br />
-                - Associates in Computer Science, Mathematics, and Natural
-                Sciences, President&apos;s List, Grossmont Community College,
-                Spring 2023
-                <br />
-                - Certificate of Web Development, UCSD Extension, Summer 2022
-                <br />- Cummulative GPA:{" "}
-                <span className="font-semibold"> 3.62 </span>
-              </div>
+                </span>
+              </p>
+              <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
+                Education:
+              </h1>
+              <ul className="flex list-disc list-inside w-full px-2 md:px-12 xl:px-24 text-white">
+                <span className="w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
+                  <li>
+                    B.S. in Computer Science, Honors Program (Cum Laude), San
+                    Diego State University, Fall 2024
+                  </li>
+                  <li>
+                    Associates in Computer Science, Mathematics, and Natural
+                    Sciences, President&apos;s List, Grossmont Community
+                    College, Spring 2023
+                  </li>
+                  <li>
+                    Certificate of Web Development, UCSD Extension, Summer 2022
+                  </li>
+                  <li>
+                    Cummulative GPA: <span className="font-extrabold">3.62</span>
+                  </li>
+                </span>
+              </ul>
+              <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
+                Skills & Achievements:
+              </h1>
+              <ul className="flex list-disc list-inside w-full px-2 md:px-12 xl:px-24 text-white">
+                <span className="w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
+                  <li>React, Node.js, JavaScript/TypeScript</li>
+                  <li>Tailwind CSS, Boostrap, Shadcn, Vanilla CSS and HTML</li>
+                  <li>Git & GitHub file and collaboration management</li>
+                  <li>MySQL, Firebase, and MongoDB</li>
+                  <li>Linux system administration</li>
+                  <li>Python 3.8+ (basic)</li>
+                </span>
+              </ul>
+              <hr className="my-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
             </div>
-            <h1 className="w-full text-lg font-bold text-white text-align-left pl-4 sm:pl-12">
-              Skills & Achievements:
-            </h1>
-            <ul className="flex list-disc list-inside w-full px-6 xl:px-24 text-white">
-              <span className="block border-l-2 pl-6 md:pl-12 border-[#a3b18a]/40">
-                <li>React, Node.js, JavaScript/TypeScript</li>
-                <li>Tailwind CSS, Boostrap, Shadcn, Vanilla CSS and HTML</li>
-                <li>Git & GitHub file and collaboration management</li>
-                <li>MySQL, Firebase, and MongoDB</li>
-                <li>Linux system administration</li>
-                <li>Python 3.8+ (basic)</li>
-              </span>
-            </ul>
-            <hr className="my-8 border-t-2 border-[#a3b18a]/40 w-full max-w-3xl" />
           </div>
           <div
-            className="bottom-section flex flex-col gap-3 items-center justify-center"
+            className="bottom-section min-h-[90vh] flex flex-col items-center justify-around"
             style={{
               opacity: bottomSectionOpacity,
               willChange: "opacity, transform",
@@ -140,96 +148,112 @@ export default function PortfolioPage() {
               transition: "opacity 0.5s, transform 0.3s",
             }}
           >
-            <hr className="mb-8 border-t-2 border-[#a3b18a]/40 w-full max-w-3xl" />
+            <hr className="lg:mb-8 border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
-            <div className="block border-l-2 pl-12 border-[#a3b18a]/40">
-              <h1 className="w-full text-3xl font-bold text-white text-align-left">
+            <div className="block border-l-2 px-4 sm:px-12 border-[#a3b18a]/40">
+              <h1 className="w-full text-lg font-bold underline underline-offset-4 decoration-[#a3b18a]/40 text-white text-align-left mb-4 md:mb-2 pl-4 sm:pl-12">
                 Professional Experience:
               </h1>
-              <p className="text-white mt-6 w-full px-6 xl:px-24 text-center">
-                <strong>Personal Portfolio Website</strong> <br />
-                <em>Front-End Web Development Project (2024)</em>
-              </p>
-              <ul className="list-disc list-inside text-white w-full px-6 xl:px-24 mt-2 space-y-2">
-                <li>
-                  Designed and developed this personal portfolio using React.js,
-                  Next.js, and Tailwind CSS to showcase skills, projects, and
-                  contact information.
-                </li>
-                <li>
-                  Implemented smooth animations and transitions using custom
-                  React components for an engaging and responsive user
-                  experience.
-                </li>
-                <li>
-                  Structured content to highlight technical competencies,
-                  education, and project experience, making it easily navigable
-                  by potential employers.
-                </li>
-                <li>
-                  Integrated GitHub Pages deployment and custom domain
-                  configuration for professional presentation and accessibility.
-                </li>
-              </ul>
-
-              <p className="text-white text-center mt-6">
-                <strong>Tealium Hackathon – 2nd Place Finish</strong> <br />
-                <em>La Jolla, CA (Summer 2022)</em>
-              </p>
-              <ul className="list-disc list-inside text-white w-full px-6 xl:px-24 mt-2 space-y-2">
-                <li>
-                  Collaborated in a team of three to design a product using
-                  Tealium’s Customer Data Hub within a 48-hour window.
-                </li>
-                <li>
-                  Quickly learned and applied Tealium’s tag management and
-                  customer data tools without prior exposure, demonstrating
-                  adaptability and fast technical onboarding.
-                </li>
-                <li>
-                  Built a data-driven advertising concept that recommended
-                  optimal ad placements based on real-time user behavior.
-                </li>
-                <li>
-                  Earned 2nd place out of 50+ participants, recognized for
-                  innovative thinking, rapid skill acquisition, and practical
-                  application of unfamiliar technologies.
-                </li>
-              </ul>
-
-              <p className="text-white text-center mt-6">
-                <strong>Freelance Web Developer – Dahlia Coastal Living</strong>{" "}
-                <br />
-                <em>San Diego, CA (Nov 2024 - Present)</em>
-              </p>
-              <ul className="list-disc list-inside text-white w-full mb-8 px-6 xl:px-24 mt-2 space-y-2">
-                <li>
-                  Built and deployed a responsive React and Bootstrap website
-                  for a local property management company to showcase duplexes,
-                  support marketing, and handle inquiries.
-                </li>
-                <li>
-                  Designed an accessible, mobile-friendly interface with a clean
-                  layout focused on usability and simplicity.
-                </li>
-                <li>
-                  Created a lightweight inventory system editable directly in
-                  code, eliminating the need for a database and simplifying
-                  property updates for non-technical users.
-                </li>
-                <li>
-                  Collaborated with the client to define project goals and
-                  requirements, iterating on feedback to deliver a tailored
-                  solution.
-                </li>
-                <li>
-                  Utilized Git for version control and deployed the site via
-                  GitHub Pages with a custom domain hosted on GoDaddy.
-                </li>
-              </ul>
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 mb-4 sm:mb-8 mx-4 sm:px-12 lg:mx-16">
+                <div className="text-white text-center my-2 md:my-4 w-full px-6 xl:px-24">
+                  <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
+                    Personal Portfolio Website
+                  </strong>
+                  <em className="block text-[0.55rem] sm:text-[0.65rem] md:text-sm leading-tight">
+                    Front-End Web Development Project (2024)
+                  </em>
+                </div>
+                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full mt-2 pb-4 space-y-0.5">
+                  <li>
+                    Designed and developed this personal portfolio using
+                    React.js, Next.js, and Tailwind CSS to showcase skills,
+                    projects, and contact information.
+                  </li>
+                  <li>
+                    Implemented smooth animations and transitions using custom
+                    React components for an engaging and responsive user
+                    experience.
+                  </li>
+                  <li>
+                    Structured content to highlight technical competencies,
+                    education, and project experience, making it easily
+                    navigable by potential employers.
+                  </li>
+                  <li>
+                    Integrated GitHub Pages deployment and custom domain
+                    configuration for professional presentation and
+                    accessibility.
+                  </li>
+                </ul>
+              </span>
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 mb-4 sm:mb-8 mx-4 sm:px-12 lg:mx-16">
+                <p className="text-white text-center text-[0.75rem] md:text-base my-2 md:my-4">
+                  <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
+                    Tealium Hackathon – 2nd Place Finish
+                  </strong>
+                  <em className="block text-[0.55rem] sm:text-[0.65rem] md:text-sm leading-tight">
+                    La Jolla, CA (Summer 2022)
+                  </em>
+                </p>
+                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full mt-2 pb-4 space-y-0.5">
+                  <li>
+                    Collaborated in a team of three to design a product using
+                    Tealium’s Customer Data Hub within a 48-hour window.
+                  </li>
+                  <li>
+                    Quickly learned and applied Tealium’s tag management and
+                    customer data tools without prior exposure, demonstrating
+                    adaptability and fast technical onboarding.
+                  </li>
+                  <li>
+                    Built a data-driven advertising concept that recommended
+                    optimal ad placements based on real-time user behavior.
+                  </li>
+                  <li>
+                    Earned 2nd place out of 50+ participants, recognized for
+                    innovative thinking, rapid skill acquisition, and practical
+                    application of unfamiliar technologies.
+                  </li>
+                </ul>
+              </span>
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 mb-4 sm:mb-8 mx-4 sm:px-12 lg:mx-16">
+                <p className="text-white text-center text-[0.75rem] md:text-base my-2 md:my-4">
+                  <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
+                    Freelance Web Developer – Dahlia Coastal Living
+                  </strong>{" "}
+                  <em className="block text-[0.55rem] sm:text-[0.65rem] md:text-sm leading-tight">
+                    San Diego, CA (Nov 2024 - Present)
+                  </em>
+                </p>
+                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full lg:mb-8 my-2 space-y-0.5">
+                  <li>
+                    Built and deployed a responsive React and Bootstrap website
+                    for a local property management company to showcase
+                    duplexes, support marketing, and handle inquiries.
+                  </li>
+                  <li>
+                    Designed an accessible, mobile-friendly interface with a
+                    clean layout focused on usability and simplicity.
+                  </li>
+                  <li>
+                    Created a lightweight inventory system editable directly in
+                    code, eliminating the need for a database and simplifying
+                    property updates for non-technical users.
+                  </li>
+                  <li>
+                    Collaborated with the client to define project goals and
+                    requirements, iterating on feedback to deliver a tailored
+                    solution.
+                  </li>
+                  <li>
+                    Utilized Git for version control and deployed the site via
+                    GitHub Pages with a custom domain hosted on GoDaddy.
+                  </li>
+                </ul>
+              </span>
             </div>
+            <hr className="border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
           </div>
-          <hr className="border-t-2 border-[#a3b18a]/40 w-full max-w-3xl" />
           {/* <div className="w-full h-32"></div> */}
         </div>
         {/* Portfolio here */}
