@@ -2,13 +2,17 @@
 import { useEffect, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import CoverPageTransition from "@/components/CoverPageTransition";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function PortfolioPage() {
   const [showCover, setShowCover] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
   const [topSectionOpacity, setTopSectionOpacity] = useState(1);
   const [bottomSectionOpacity, setBottomSectionOpacity] = useState(0);
-
+  
+  // chevron state for autoscroll
+  const [chevronActive, setChevronActive] = useState(false);
+  
   // Trigger fade-in after mount
   useEffect(() => {
     const timeout = setTimeout(() => setFadeIn(true), 50);
@@ -48,6 +52,28 @@ export default function PortfolioPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Auto scroll function
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      const scrollY = window.scrollY;
+      const scrollRange =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const halfway = scrollRange / 2;
+
+      // If in top 50% and scrolling down, go to bottom
+      if (scrollY < halfway && e.deltaY > 0) {
+        window.scrollTo({ top: scrollRange, behavior: "smooth" });
+      }
+      // If in bottom 50% and scrolling up, go to top
+      else if (scrollY >= halfway && e.deltaY < 0) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, []);
+
+
   return (
     <>
       <PageTransition />
@@ -70,21 +96,27 @@ export default function PortfolioPage() {
               transform: `translateX(${(1 - topSectionOpacity) * -500}px)`,
             }}
           >
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center mt-6">
-              Luke Patterson
-            </h1>
-            <h1 className="mb-4 text-[0.8rem] sm:text-lg lg:text-2xl font-semibold text-white">
-              San Diego,
-              CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
-            </h1>
-
-            <div className="flex-1 flex flex-col gap-1 md:gap-3 items-center justify-center">
+            <div
+              className="bg-white/10 py-4 px-8"
+              style={{
+                boxShadow: "inset 0 1px 10px -1px rgba(71, 85, 105, 0.7)",
+              }}
+            >
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center mt-6">
+                Luke Patterson
+              </h1>
+              <h1 className="mb-4 text-[0.8rem] sm:text-lg lg:text-2xl font-semibold text-white">
+                San Diego,
+                CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
+              </h1>
+            </div>
+            <div className="flex-1 flex flex-col gap-3 px-12 xl:px-36 items-center justify-center">
               <hr className="lg:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
               <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
                 Profile:
               </h1>
-              <p className="flex w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] px-2 md:px-12 xl:px-24">
+              <p className="flex w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] px-2 md:px-12 xl:px-24 mb-4">
                 <span className="block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
                   Full-stack web developer and Honors Computer Science graduate
                   with hands-on experience in React (Next.js), Node.js,
@@ -105,7 +137,7 @@ export default function PortfolioPage() {
                 Education:
               </h1>
               <ul className="flex list-disc list-inside w-full px-2 md:px-12 xl:px-24 text-white">
-                <span className="w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
+                <span className="w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] block border-l-2 px-6 sm:px-12 mb-4 border-[#a3b18a]/40">
                   <li>
                     B.S. in Computer Science, Honors Program (Cum Laude), San
                     Diego State University, Fall 2024
@@ -119,7 +151,8 @@ export default function PortfolioPage() {
                     Certificate of Web Development, UCSD Extension, Summer 2022
                   </li>
                   <li>
-                    Cummulative GPA: <span className="font-extrabold">3.62</span>
+                    Cummulative GPA:{" "}
+                    <span className="font-extrabold">3.62</span>
                   </li>
                 </span>
               </ul>
@@ -136,11 +169,29 @@ export default function PortfolioPage() {
                   <li>Python 3.8+ (basic)</li>
                 </span>
               </ul>
-              <hr className="my-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
+              <div className="w-full flex flex-col items-center justify-center">
+                <hr className="my-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
+                <ChevronDownIcon
+                  className={`size-10 sm:size-15 text-[#a3b18a]/40 hover:text-white chevron-bounce ${
+                    chevronActive ? "bg-white/10" : ""
+                  }`}
+                  strokeWidth={1}
+                  onMouseDown={() => setChevronActive(true)}
+                  onMouseUp={() => setChevronActive(false)}
+                  onClick={() => {
+                    setChevronActive(true);
+                    window.scrollTo({
+                      top: document.body.scrollHeight,
+                      behavior: "smooth",
+                    });
+                    setTimeout(() => setChevronActive(false), 300); // Remove highlight after 0.6s
+                  }}
+                />
+              </div>
             </div>
           </div>
           <div
-            className="bottom-section min-h-[90vh] flex flex-col items-center justify-around"
+            className="bottom-section min-h-[90vh] flex flex-col items-center justify-evenly"
             style={{
               opacity: bottomSectionOpacity,
               willChange: "opacity, transform",
@@ -151,10 +202,10 @@ export default function PortfolioPage() {
             <hr className="lg:mb-8 border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
             <div className="block border-l-2 px-4 sm:px-12 border-[#a3b18a]/40">
-              <h1 className="w-full text-lg font-bold underline underline-offset-4 decoration-[#a3b18a]/40 text-white text-align-left mb-4 md:mb-2 pl-4 sm:pl-12">
+              <h1 className="w-full text-lg md:text-2xl font-bold underline underline-offset-4 decoration-[#a3b18a]/40 text-white text-align-left mb-12 md:mb-4 lg:mb-8 mx-4 lg:mx-10">
                 Professional Experience:
               </h1>
-              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 mb-4 sm:mb-8 mx-4 sm:px-12 lg:mx-16">
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-4 lg:mx-10">
                 <div className="text-white text-center my-2 md:my-4 w-full px-6 xl:px-24">
                   <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
                     Personal Portfolio Website
@@ -163,7 +214,7 @@ export default function PortfolioPage() {
                     Front-End Web Development Project (2024)
                   </em>
                 </div>
-                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full mt-2 pb-4 space-y-0.5">
+                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full mt-3 pb-3 space-y-0.5">
                   <li>
                     Designed and developed this personal portfolio using
                     React.js, Next.js, and Tailwind CSS to showcase skills,
@@ -186,7 +237,7 @@ export default function PortfolioPage() {
                   </li>
                 </ul>
               </span>
-              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 mb-4 sm:mb-8 mx-4 sm:px-12 lg:mx-16">
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-4 lg:mx-10">
                 <p className="text-white text-center text-[0.75rem] md:text-base my-2 md:my-4">
                   <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
                     Tealium Hackathon – 2nd Place Finish
@@ -195,7 +246,7 @@ export default function PortfolioPage() {
                     La Jolla, CA (Summer 2022)
                   </em>
                 </p>
-                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full mt-2 pb-4 space-y-0.5">
+                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full mt-3 pb-3 space-y-0.5">
                   <li>
                     Collaborated in a team of three to design a product using
                     Tealium’s Customer Data Hub within a 48-hour window.
@@ -216,7 +267,7 @@ export default function PortfolioPage() {
                   </li>
                 </ul>
               </span>
-              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 mb-4 sm:mb-8 mx-4 sm:px-12 lg:mx-16">
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-4 lg:mx-10">
                 <p className="text-white text-center text-[0.75rem] md:text-base my-2 md:my-4">
                   <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
                     Freelance Web Developer – Dahlia Coastal Living
@@ -225,7 +276,7 @@ export default function PortfolioPage() {
                     San Diego, CA (Nov 2024 - Present)
                   </em>
                 </p>
-                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] w-full lg:mb-8 my-2 space-y-0.5">
+                <ul className="list-disc list-inside text-white text-center text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] h-auto my-3 space-y-0.5">
                   <li>
                     Built and deployed a responsive React and Bootstrap website
                     for a local property management company to showcase

@@ -9,14 +9,32 @@ export default function Home() {
   const [covering, setCovering] = useState(false);
   const [phase, setPhase] = useState<0 | 1 | 2>(0);
   const [phase1Started, setPhase1Started] = useState(false);
+
+  // green section dimensions and position
   const [greenTop, setGreenTop] = useState(0);
   const [greenHeight, setGreenHeight] = useState(0);
   const [greenLeft, setGreenLeft] = useState(0);
   const [greenWidth, setGreenWidth] = useState(0);
-  const [redirectPath, setRedirectPath] = useState<string>("/portfolio");
 
+  // redirect path for navigation
+  const [redirectPath, setRedirectPath] = useState<string>("/portfolio");
   const router = useRouter();
   const greenRef = useRef<HTMLDivElement>(null);
+
+  // scroll-based fade and progress
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollRange, setScrollRange] = useState(0);
+
+  // mobile detection
+  const [isMobile, setIsMobile] = useState(false);
+
+  // detect if the viewport is mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // handles animated redirect for button and navbar
   const handleAnimatedRedirect = (targetPath: string) => {
@@ -72,10 +90,6 @@ export default function Home() {
     return () => document.removeEventListener("click", handleClick);
   }, []);
 
-  // scroll-based fade and progress
-  const [scrollY, setScrollY] = useState(0);
-  const [scrollRange, setScrollRange] = useState(0);
-
   useEffect(() => {
     const updateScrollRange = () => {
       setScrollRange(document.body.scrollHeight - window.innerHeight);
@@ -111,7 +125,6 @@ export default function Home() {
             height: greenHeight,
             zIndex: 9999,
             marginTop: 0,
-            borderRadius: "16px",
             transition:
               "width 0.5s cubic-bezier(.77,0,.18,1), left 0.5s cubic-bezier(.77,0,.18,1)",
             overflow: "hidden",
@@ -124,7 +137,6 @@ export default function Home() {
             height: greenHeight,
             zIndex: 9999,
             marginTop: 0,
-            borderRadius: "16px",
             transition: "none",
             overflow: "hidden",
           };
@@ -139,7 +151,7 @@ export default function Home() {
         marginTop: 0,
         borderRadius: "0px",
         transition:
-          "top 0.7s cubic-bezier(.77,0,.18,1), height 0.7s cubic-bezier(.77,0,.18,1), border-radius 0.7s cubic-bezier(.77,0,.18,1)",
+          "top 0.7s cubic-bezier(.77,0,.18,1), height 0.7s cubic-bezier(.77,0,.18,1)",
         overflow: "hidden",
       };
     } else {
@@ -151,7 +163,6 @@ export default function Home() {
         height: greenHeight,
         zIndex: 9999,
         marginTop: 0,
-        borderRadius: "16px",
         transition: "none",
         overflow: "hidden",
       };
@@ -167,7 +178,7 @@ export default function Home() {
       <PageTransition />
       <div className="px-8 sm:px-12 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
         {/* three-column section */}
-        <div className="relative flex w-full h-[70vh] max-h-[70vh] mx-auto mt-12 items-stretch">
+        <div className="relative flex flex-col md:flex-row w-full h-auto max-h-[70vh] mx-auto mt-12 mb-4 md:my-0 md:mt-8 items-center md:items-stretch">
           {/* left column */}
           <div
             className="w-1/3 text-right pr-4 z-20 flex flex-col justify-center items-center"
@@ -178,18 +189,23 @@ export default function Home() {
               transform: `translateX(-${barAndGreenProgress * 125}%)`,
             }}
           >
-            <h1
-              className="pb-4 ml-48 text-7xl tracking-wide font-extrabold text-center whitespace-nowrap"
-              style={{ textShadow: "0 4px 12px #7b8f72, 0 0px 3px #7b8f72" }}
+            <span
+              className="bg-white/60 p-4"
+              style={{ boxShadow: "0 8px 16px -10px rgba(71,85,105,0.7)" }}
             >
-              Luke Patterson
-            </h1>
-            <h3
-              className="pt-4 ml-48 text-4xl tracking-wide font-semibold text-center whitespace-nowrap"
-              style={{ textShadow: "0 3px 10px #7b8f72, 0 0px 2px #7b8f72" }}
-            >
-              Full stack web developer
-            </h3>
+              <h1
+                className="text-zinc-800 pb-1 lg:pb-4 px-2 lg:px-8 text-4xl lg:text-5xl tracking-wide font-extrabold text-center whitespace-nowrap"
+                style={{ textShadow: "0 4px 12px #7b8f72, 0 0px 3px #7b8f72" }}
+              >
+                Luke Patterson
+              </h1>
+              <h3
+                className="text-zinc-800 pt-1 lg:pt-4 px-2 lg:px-8 text-lg lg:text-2xl tracking-wide font-semibold text-center whitespace-nowrap"
+                style={{ textShadow: "0 3px 10px #7b8f72, 0 0px 2px #7b8f72" }}
+              >
+                Full stack web developer
+              </h3>
+            </span>
           </div>
           {/* center column */}
           <div className="w-1/3 relative z-10 overflow-visible flex items-center justify-center">
@@ -197,11 +213,18 @@ export default function Home() {
               className="h-full flex items-center justify-center fade-edges"
               style={{
                 minWidth: 0,
-                marginBottom:
-                  barAndGreenProgress >= 0.5
-                    ? `${((barAndGreenProgress - 0.5) / 0.5) * 100}vh`
-                    : "0vh",
-                transition: "margin-bottom 0.3s",
+                ...(isMobile
+                  ? {
+                      opacity: 1 - barAndGreenProgress, // fade out on scroll for small screens
+                      transition: "opacity 0.3s",
+                    }
+                  : {
+                      marginBottom:
+                        barAndGreenProgress >= 0.5
+                          ? `${((barAndGreenProgress - 0.5) / 0.5) * 100}vh`
+                          : "0vh",
+                      transition: "margin-bottom 0.3s",
+                    }),
               }}
             >
               <Image
@@ -209,15 +232,19 @@ export default function Home() {
                 alt="center"
                 width={2000}
                 height={2000}
-                style={{ height: "100%", width: "auto", maxWidth: "none" }}
-                className="shadow-lg"
+                style={{
+                  height: "auto",
+                  width: "auto",
+                  maxWidth: "50vw",
+                }}
+                className="shadow-lg max-h-[40vh] md:max-h-[60vh] my-8 md:my-0"
                 priority
               />
             </div>
           </div>
           {/* right column */}
           <div
-            className="w-1/3 text-left pl-4 z-20 flex items-center"
+            className="w-full md:w-1/3 text-left z-20 flex justify-center items-center"
             style={{
               opacity: 1 - fade,
               transition:
@@ -225,14 +252,20 @@ export default function Home() {
               transform: `translateX(${barAndGreenProgress * 125}%)`,
             }}
           >
-            <p
-              className="text-xl tracking-wide font-normal text-center"
-              style={{ textShadow: "0 2px 8px #7b8f72, 0 0px 1px #7b8f72" }}
+            {" "}
+            <span
+              className="bg-white/60 p-4"
+              style={{ boxShadow: "0 8px 16px -10px rgba(71,85,105,0.7)" }}
             >
-              Bachelor of Science in Computer Sience, SDSU
-              <br />
-              Web Developer for Dahlia Coastal Living Properties
-            </p>
+              <p
+                className="text-zinc-800 text-xs sm:text-base md:text-sm tracking-wide font-semibold text-center whitespace-nowrap px-2 lg:px-8"
+                style={{ textShadow: "0 2px 8px #7b8f72, 0 0px 1px #7b8f72" }}
+              >
+                Bachelor of Science in Computer Sience, SDSU
+                <br />
+                Web Developer for Dahlia Coastal Living Properties
+              </p>
+            </span>
           </div>
         </div>
         {/* white bar overlays the green section */}
@@ -247,6 +280,7 @@ export default function Home() {
         >
           <div
             style={{
+              boxShadow: "0 10px 5px -4px rgba(71, 85, 105, 0.7)",
               position: "absolute",
               left: 0,
               top: 0,
@@ -268,6 +302,7 @@ export default function Home() {
             covering
               ? greenCoverStyle
               : {
+                  boxShadow: "inset 0 4px 10px 5px rgba(71, 85, 105, 0.7)",
                   marginTop: `${animatedMarginTop}px`,
                   height: animatedHeight,
                   position: "relative",
@@ -279,12 +314,20 @@ export default function Home() {
         >
           {/* centered button */}
           {!covering && (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{
+                opacity: fade,
+                transition:
+                  "opacity 0.3s, transform 0.3s cubic-bezier(.77,0,.18,1)",
+                willChange: "opacity",
+              }}
+            >
               <button
                 onClick={() => handleAnimatedRedirect("/portfolio")}
-                className="px-8 py-4 rounded-lg bg-white text-[#7b8f72] font-bold text-2xl shadow-lg hover:bg-[#e6e6e6] transition"
+                className="px-8 py-4 z-20 rounded-lg bg-white text-zinc-800 font-bold text-2xl shadow-zinc-600/70 shadow-xl transition-all duration-150 hover:scale-105 hover:bg-zinc-200 active:scale-95 active:bg-[#43513e] active:text-white"
               >
-                view portfolio
+                View Portfolio
               </button>
             </div>
           )}

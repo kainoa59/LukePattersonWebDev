@@ -27,9 +27,9 @@ export default function PageTransition() {
       style={{
         transition: "transform 1.2s cubic-bezier(.77,0,.18,1)",
         transform: visible ? "translateY(0)" : "translateY(100%)",
-        borderBottomLeftRadius: "1rem",
-        borderBottomRightRadius: "1rem",
         pointerEvents: "none",
+        boxShadow: "0 -5px 20px -4px black",
+        willChange: "transform",
       }}
     />
   );

@@ -32,9 +32,9 @@ export default function CoverPageTransition() {
       style={{
         transition: "transform 1.2s cubic-bezier(.77,0,.18,1)",
         transform: expanded ? "translateY(0)" : "translateY(100%)",
-        borderTopLeftRadius: "1rem",
-        borderTopRightRadius: "1rem",
         pointerEvents: "auto",
+        boxShadow: "0 -5px 20px -4px black",
+        willChange: "transform",
       }}
     />,
     document.body

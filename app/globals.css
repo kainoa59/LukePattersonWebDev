@@ -18,7 +18,7 @@ main {
   padding-top: var(--navbar-height, 64px);
 }
 
-@media(max-width: 767px){
+@media (max-width: 767px) {
   main {
     padding-top: 35px;
   }
@@ -46,10 +46,59 @@ main {
 
 .fade-edges img {
   /* fades on all four edges */
-  mask-image:
-    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
+  mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 25%,
+      black 75%,
+      transparent 100%
+    ),
     linear-gradient(to bottom, transparent 0%, black 2.5%, black 100%);
   mask-composite: intersect;
+}
+
+/*animation for chevron*/
+@keyframes chevron-bounce {
+  0% {
+    transform: translateY(0);
+    color: rgba(207,224,177,0.4);
+  }
+  5% {
+    transform: translateY(0px);
+    color: #cfe0b1;
+  }
+  10% {
+    transform: translateY(-5px);
+    color: #cfe0b1;
+  }
+  20% {
+    transform: translateY(5px);
+    color: #cfe0b1;
+  }
+  30% {
+    transform: translateY(0);
+    color: #cfe0b1;
+  }
+  35% {
+    transform: translateY(0);
+    color: rgba(207,224,177,0.4);
+  }
+  100% {
+    transform: translateY(0);
+    color: rgba(207,224,177,0.4);
+  }
+}
+
+.chevron-bounce {
+  animation: chevron-bounce 10s cubic-bezier(0.77, 0, 0.18, 1) infinite;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.chevron-bounce:hover {
+  animation-play-state: none;
+  transform: translateY(0) !important;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+  color: white !important;
 }
 
 @media (prefers-color-scheme: dark) {

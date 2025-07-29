@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 
 const FINAL_HEIGHT = "0vh"; // Match your green section's height
 
-export default function GreenCoverTransition({ expandUp = false }: { expandUp?: boolean }) {
+export default function GreenCoverTransition({
+  expandUp = false,
+}: {
+  expandUp?: boolean;
+}) {
   const [coverAnim, setCoverAnim] = useState(expandUp ? false : true);
 
   useEffect(() => {
@@ -21,11 +25,13 @@ export default function GreenCoverTransition({ expandUp = false }: { expandUp?: 
 
   return (
     <div
-      className="fixed left-0 bottom-0 w-full z-[9999] bg-[#7b8f72] rounded-t-xl"
+      className="fixed left-0 bottom-0 w-full z-[9999] bg-[#7b8f72]"
       style={{
         height: coverAnim ? "100vh" : FINAL_HEIGHT,
         transition: "height 1.2s cubic-bezier(.77,0,.18,1)",
         pointerEvents: "none",
+        boxShadow: "0 -5px 20px -4px black",
+        willChange: "transform",
       }}
     />
   );

@@ -113,7 +113,7 @@ export default function PortfolioPage() {
             <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  <span className="inline-block pb-4 px-20 border-b">
+                  <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
                     C++ Robotics
                   </span>
                 </CardTitle>
@@ -168,7 +168,7 @@ export default function PortfolioPage() {
                 {/* <CardAction>Action</CardAction> */}
               </CardHeader>
               <CardContent className="mt-auto">
-                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Watch the Pololu 3pi+32U4 robot in the first video as it uses
                   lidar to detect color changes beneath it, and sonar to sense
                   and avoid obstacles. The second video demonstates an advanced
@@ -186,7 +186,7 @@ export default function PortfolioPage() {
             <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  <span className="inline-block pb-4 px-20 border-b">
+                  <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
                     Web Development
                   </span>
                 </CardTitle>
@@ -213,7 +213,7 @@ export default function PortfolioPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Explore DahliaCoastalLivingInIB.com, a custom-built site
                   showcasing coastal-inspired duplexes and amenities. It
                   combines responsive design, Bootstrap components, React
@@ -231,7 +231,7 @@ export default function PortfolioPage() {
             <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  <span className="inline-block pb-4 px-20 border-b">
+                  <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
                     Virtualization
                   </span>
                 </CardTitle>
@@ -249,7 +249,7 @@ export default function PortfolioPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Here I built and managed a suite of virtual machines across
                   OpenBSD, FreeBSD, Rocky Linux, Ubuntu, and Solaris
                   (OpenIndiana) using VMware Fusion. The labs focused on
@@ -269,7 +269,7 @@ export default function PortfolioPage() {
             <Card className="shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
-                  <span className="inline-block pb-4 px-20 border-b">
+                  <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
                     3D Game Programming
                   </span>
                 </CardTitle>
@@ -316,7 +316,7 @@ export default function PortfolioPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="indent-8 text-justify text-zinc-700 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   In this project, my team developed a 3D physics-based ball
                   game using Unity and C#. Players navigate a rolling ball
                   through a series of obstacles and platforms to collect items
