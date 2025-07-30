@@ -201,11 +201,11 @@ export default function PortfolioPage() {
           >
             <hr className="lg:mb-8 border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
-            <div className="block border-l-2 px-4 sm:px-12 border-[#a3b18a]/40">
+            <div className="block border-l-2 px-2 sm:px-12 border-[#a3b18a]/40">
               <h1 className="w-full text-lg md:text-2xl font-bold underline underline-offset-4 decoration-[#a3b18a]/40 text-white text-align-left mb-12 md:mb-4 lg:mb-8 mx-4 lg:mx-10">
                 Professional Experience:
               </h1>
-              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-4 lg:mx-10">
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-0 sm:mx-4 lg:mx-10">
                 <div className="text-white text-center my-2 md:my-4 w-full px-6 xl:px-24">
                   <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
                     Personal Portfolio Website
@@ -237,7 +237,7 @@ export default function PortfolioPage() {
                   </li>
                 </ul>
               </span>
-              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-4 lg:mx-10">
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-0 sm:mx-4 lg:mx-10">
                 <p className="text-white text-center text-[0.75rem] md:text-base my-2 md:my-4">
                   <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
                     Tealium Hackathon – 2nd Place Finish
@@ -267,7 +267,7 @@ export default function PortfolioPage() {
                   </li>
                 </ul>
               </span>
-              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-4 lg:mx-10">
+              <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-0 sm:mx-4 lg:mx-10">
                 <p className="text-white text-center text-[0.75rem] md:text-base my-2 md:my-4">
                   <strong className="block text-[0.7rem] sm:text-sm md:text-base lg:text-lg leading-tight">
                     Freelance Web Developer – Dahlia Coastal Living
