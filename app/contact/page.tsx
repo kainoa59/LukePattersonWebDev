@@ -63,7 +63,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[80vh] bg-[#7b8f72] flex flex-col items-center justify-start mt-12 p-6 xl:p-8"
+          className="w-full min-h-[80vh] bg-[#7b8f72] flex flex-col items-center justify-start mt-8 sm:mt-12 p-6 xl:p-8"
           style={{
             opacity: fadeIn ? 1 : 0,
             transition: "opacity 1.5s cubic-bezier(.77,0,.18,1)",

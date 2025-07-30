@@ -12,7 +12,7 @@ export default function PortfolioPage() {
   
   // chevron state for autoscroll
   const [chevronActive, setChevronActive] = useState(false);
-  
+
   // Trigger fade-in after mount
   useEffect(() => {
     const timeout = setTimeout(() => setFadeIn(true), 50);
@@ -110,8 +110,8 @@ export default function PortfolioPage() {
                 CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
               </h1>
             </div>
-            <div className="flex-1 flex flex-col gap-3 px-12 xl:px-36 items-center justify-center">
-              <hr className="lg:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
+            <div className="flex-1 flex flex-col gap-1 sm:gap-3 px-12 xl:px-36 items-center justify-center">
+              <hr className="mt-1 lg:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
               <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
                 Profile:
@@ -170,7 +170,7 @@ export default function PortfolioPage() {
                 </span>
               </ul>
               <div className="w-full flex flex-col items-center justify-center">
-                <hr className="my-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
+                <hr className="my-1 lg:my-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
                 <ChevronDownIcon
                   className={`size-10 sm:size-15 text-[#a3b18a]/40 hover:text-white chevron-bounce ${
                     chevronActive ? "bg-white/10" : ""
