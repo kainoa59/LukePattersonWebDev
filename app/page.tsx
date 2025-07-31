@@ -36,13 +36,13 @@ export default function Home() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // handles animated redirect for button and navbar
   const handleAnimatedRedirect = (targetPath: string) => {
     setRedirectPath(targetPath);
     if (greenRef.current) {
       const rect = greenRef.current.getBoundingClientRect();
+      const extraMobileMargin = isMobile ? 16 : 0; // 16px = Tailwind's mb-4
       setGreenTop(rect.top);
-      setGreenHeight(rect.height);
+      setGreenHeight(rect.height + extraMobileMargin); // Include extra spacing
       setGreenLeft(rect.left);
       setGreenWidth(rect.width);
       setCovering(true);
@@ -97,12 +97,16 @@ export default function Home() {
     updateScrollRange();
     window.addEventListener("resize", updateScrollRange);
 
+    // Force update after paint to fix overlay animation on load
+    const timeout = setTimeout(updateScrollRange, 500);
+
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("resize", updateScrollRange);
       window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
     };
   }, []);
 
@@ -128,6 +132,7 @@ export default function Home() {
             transition:
               "width 0.5s cubic-bezier(.77,0,.18,1), left 0.5s cubic-bezier(.77,0,.18,1)",
             overflow: "hidden",
+            boxShadow: "0 -5px 20px -4px black",
           }
         : {
             position: "fixed",
@@ -139,6 +144,7 @@ export default function Home() {
             marginTop: 0,
             transition: "none",
             overflow: "hidden",
+            boxShadow: "0 -5px 20px -4px black",
           };
     } else if (phase === 2) {
       greenCoverStyle = {
@@ -153,6 +159,7 @@ export default function Home() {
         transition:
           "top 0.7s cubic-bezier(.77,0,.18,1), height 0.7s cubic-bezier(.77,0,.18,1)",
         overflow: "hidden",
+        boxShadow: "0 -5px 20px -4px black",
       };
     } else {
       greenCoverStyle = {
@@ -165,18 +172,22 @@ export default function Home() {
         marginTop: 0,
         transition: "none",
         overflow: "hidden",
+        boxShadow: "0 -5px 20px -4px black",
       };
     }
   }
 
   // animate marginTop and height together for green section
   const animatedMarginTop = barAndGreenProgress * 72;
-  const animatedHeight = `calc(60vh - ${animatedMarginTop}px)`;
+  // const animatedHeight = `calc(60vh - ${animatedMarginTop}px)`;
 
   return (
     <>
       <PageTransition />
-      <div className="px-8 sm:px-12 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
+      <div
+        className="home-main px-8 sm:px-12 md:px-20 lg:px-24 xl:px-28 2xl:px-32"
+        style={{ overscrollBehavior: "none" }}
+      >
         {/* three-column section */}
         <div className="relative flex flex-col md:flex-row w-full h-auto max-h-[70vh] mx-auto mt-12 mb-4 md:my-0 md:mt-8 items-center md:items-stretch">
           {/* left column */}
@@ -195,13 +206,13 @@ export default function Home() {
             >
               <h1
                 className="text-zinc-800 pb-1 lg:pb-4 px-2 lg:px-8 text-4xl lg:text-5xl tracking-wide font-extrabold text-center whitespace-nowrap"
-                style={{ textShadow: "0 4px 12px #7b8f72, 0 0px 3px #7b8f72" }}
+                style={{ textShadow: "0 1px 4px #7b8f72, 0 2px 3px #7b8f72" }}
               >
                 Luke Patterson
               </h1>
               <h3
                 className="text-zinc-800 pt-1 lg:pt-4 px-2 lg:px-8 text-lg lg:text-2xl tracking-wide font-semibold text-center whitespace-nowrap"
-                style={{ textShadow: "0 3px 10px #7b8f72, 0 0px 2px #7b8f72" }}
+                style={{ textShadow: "0 1px 1px #7b8f72, 0 1px 2px #7b8f72" }}
               >
                 Full stack web developer
               </h3>
@@ -215,7 +226,7 @@ export default function Home() {
                 minWidth: 0,
                 ...(isMobile
                   ? {
-                      opacity: 1 - barAndGreenProgress, // fade out on scroll for small screens
+                      opacity: 1 - barAndGreenProgress * 2,
                       transition: "opacity 0.3s",
                     }
                   : {
@@ -259,9 +270,9 @@ export default function Home() {
             >
               <p
                 className="text-zinc-800 text-xs sm:text-base md:text-sm tracking-wide font-semibold text-center whitespace-nowrap px-2 lg:px-8"
-                style={{ textShadow: "0 2px 8px #7b8f72, 0 0px 1px #7b8f72" }}
+                style={{ textShadow: "0 1px 1px #7b8f72, 0 1px 1px #7b8f72" }}
               >
-                Bachelor of Science in Computer Sience, SDSU
+                Bachelor of Science in Computer Science, SDSU
                 <br />
                 Web Developer for Dahlia Coastal Living Properties
               </p>
@@ -303,8 +314,8 @@ export default function Home() {
               ? greenCoverStyle
               : {
                   boxShadow: "inset 0 4px 10px 5px rgba(71, 85, 105, 0.7)",
-                  marginTop: `${animatedMarginTop}px`,
-                  height: animatedHeight,
+                  marginTop: `${animatedMarginTop + (isMobile ? 16 : 0)}px`,
+                  height: "60vh",
                   position: "relative",
                   zIndex: 1,
                   transition:

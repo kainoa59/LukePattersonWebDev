@@ -9,7 +9,7 @@ export default function PortfolioPage() {
   const [fadeIn, setFadeIn] = useState(false);
   const [topSectionOpacity, setTopSectionOpacity] = useState(1);
   const [bottomSectionOpacity, setBottomSectionOpacity] = useState(0);
-  
+
   // chevron state for autoscroll
   const [chevronActive, setChevronActive] = useState(false);
 
@@ -73,7 +73,6 @@ export default function PortfolioPage() {
     return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
-
   return (
     <>
       <PageTransition />
@@ -81,7 +80,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[200vh] bg-[#7b8f72] flex flex-col items-center justify-between p-2 sm:p-6 "
+          className="w-full min-h-[200vh] bg-[#7b8f72] flex flex-col items-center justify-between p-2 sm:p-6 mt-[72px] md:mt-[64px]"
           style={{
             opacity: fadeIn ? 1 : 0,
             // fade-in effect
@@ -110,7 +109,7 @@ export default function PortfolioPage() {
                 CA&nbsp;&nbsp;•&nbsp;&nbsp;LukePattersonWebDev@gmail.com
               </h1>
             </div>
-            <div className="flex-1 flex flex-col gap-1 sm:gap-3 px-12 xl:px-36 items-center justify-center">
+            <div className="flex-1 flex flex-col gap-1 sm:gap-3 px-6 sm:px-12 xl:px-36 items-center justify-center">
               <hr className="mt-1 lg:mt-8 mx-auto border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
 
               <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
@@ -119,18 +118,14 @@ export default function PortfolioPage() {
               <p className="flex w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] px-2 md:px-12 xl:px-24 mb-4">
                 <span className="block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
                   Full-stack web developer and Honors Computer Science graduate
-                  with hands-on experience in React (Next.js), Node.js,
+                  with experience in React (Next.js), Node.js,
                   Tailwind/Bootstrap, and various SQL and NoSQL DBMS. Over two
-                  years experience in full-stack web evelopment, and two years
+                  years experience in full-stack web development, and two years
                   of experience applying mathematical analysis to software
                   projects in C++, Java, and Python. Strong communicator and
-                  team player with a background in leadership, logistics, and
+                  team player with a work background in leadership, logistics, and
                   customer interactions. Able to quickly regain fluency in
                   topics after focusing on other technologies.
-                  {/* I come from a family
-            who loves to travel and have done so extensively — this
-            has helped me thrive in dynamic, fast-changing environments and
-            communicate cross-culturally. */}
                 </span>
               </p>
               <h1 className="w-full font-bold text-white text-base md:text-lg text-align-left pl-4 sm:pl-12">
@@ -143,7 +138,7 @@ export default function PortfolioPage() {
                     Diego State University, Fall 2024
                   </li>
                   <li>
-                    Associates in Computer Science, Mathematics, and Natural
+                    Associate&apos;s in Computer Science, Mathematics, and Natural
                     Sciences, President&apos;s List, Grossmont Community
                     College, Spring 2023
                   </li>
@@ -151,7 +146,7 @@ export default function PortfolioPage() {
                     Certificate of Web Development, UCSD Extension, Summer 2022
                   </li>
                   <li>
-                    Cummulative GPA:{" "}
+                    Cumulative GPA:{" "}
                     <span className="font-extrabold">3.62</span>
                   </li>
                 </span>
@@ -162,7 +157,7 @@ export default function PortfolioPage() {
               <ul className="flex list-disc list-inside w-full px-2 md:px-12 xl:px-24 text-white">
                 <span className="w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
                   <li>React, Node.js, JavaScript/TypeScript</li>
-                  <li>Tailwind CSS, Boostrap, Shadcn, Vanilla CSS and HTML</li>
+                  <li>Tailwind CSS, Bootstrap, Shadcn, Vanilla CSS and HTML</li>
                   <li>Git & GitHub file and collaboration management</li>
                   <li>MySQL, Firebase, and MongoDB</li>
                   <li>Linux system administration</li>
@@ -226,15 +221,14 @@ export default function PortfolioPage() {
                     experience.
                   </li>
                   <li>
-                    Structured content to highlight technical competencies,
-                    education, and project experience, making it easily
-                    navigable by potential employers.
+                    Structured content to highlight technical skills, education,
+                    and project experience, making it easily navigable by
+                    potential employers.
                   </li>
                   <li>
-                    Integrated GitHub Pages deployment and custom domain
-                    configuration for professional presentation and
-                    accessibility.
-                  </li>
+                    Integrated Vercel deployment via GitHub for global
+                    accessibility and version control.
+                  </li>H
                 </ul>
               </span>
               <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-0 sm:mx-4 lg:mx-10">
@@ -258,7 +252,8 @@ export default function PortfolioPage() {
                   </li>
                   <li>
                     Built a data-driven advertising concept that recommended
-                    optimal ad placements based on real-time user behavior.
+                    optimal &quot;brick and mortar&quot; ad placements based on
+                    real-time user behavior.
                   </li>
                   <li>
                     Earned 2nd place out of 50+ participants, recognized for
@@ -284,10 +279,10 @@ export default function PortfolioPage() {
                   </li>
                   <li>
                     Designed an accessible, mobile-friendly interface with a
-                    clean layout focused on usability and simplicity.
+                    clean layout that is focused on usability and simplicity.
                   </li>
                   <li>
-                    Created a lightweight inventory system editable directly in
+                    Created a lightweight inventory system that is editable directly in
                     code, eliminating the need for a database and simplifying
                     property updates for non-technical users.
                   </li>

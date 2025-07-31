@@ -63,7 +63,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[80vh] bg-[#7b8f72] flex flex-col items-center justify-start mt-8 sm:mt-12 p-6 xl:p-8"
+          className="w-full min-h-[80vh] bg-[#7b8f72] flex flex-col items-center justify-start mt-[72px] md:mt-[64px] p-6 xl:p-8"
           style={{
             opacity: fadeIn ? 1 : 0,
             transition: "opacity 1.5s cubic-bezier(.77,0,.18,1)",
@@ -74,18 +74,19 @@ export default function PortfolioPage() {
             All form submissions are sent to my direct email
           </h3>
           {submitted ? (
-            <div className="flex flex-col items-center justify-center bg-white/80 p-8 shadow-zinc-950/40 shadow-lg min-w-[300px] w-full max-w-3xl mt-4 border border-[#a3b18a]/40">
+            <div className="flex flex-col flex-1 items-center justify-evenly bg-white/80 p-8 shadow-zinc-950/40 shadow-lg min-w-[300px] w-full max-w-3xl mt-4 border border-[#a3b18a]/40">
               <p className="text-zinc-800 text-xl font-semibold text-center">
                 Thank you for reaching out!
               </p>
-              <p className="text-zinc-700 text-base text-center mt-2">
+              <p className="text-zinc-700 text-sm sm:text-base text-center mt-2">
+                Your message has been emailed to me along with your contact information, <br/>
                 I will get back to you soon.
               </p>
             </div>
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col flex-1 gap-4 bg-white/80 shadow-zinc-950/80 shadow-lg p-8 min-w-[300px] w-full max-w-3xl"
+              className="flex flex-col flex-1 gap-4 bg-white/80 shadow-zinc-950/80 shadow-lg p-4 sm:p-8 min-w-[300px] w-full max-w-3xl"
             >
               <label className="flex flex-col font-semibold text-zinc-800/60">
                 <input

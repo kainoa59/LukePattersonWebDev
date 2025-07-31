@@ -38,7 +38,11 @@ export const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link
           href="/"
-          className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
+          className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+            pathname === "/"
+              ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+              : ""
+          }`}
           onClick={(e) => handleNavClick(e, "/")}
         >
           Welcome
@@ -50,39 +54,60 @@ export const Navbar = () => {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-zinc-800 group-active:bg-[#43513e] group-hover:bg-[#7b8f72] mb-1 transition-all ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`
+              block w-6 h-0.5 mb-1 transition-all
+             bg-zinc-800
+             group-active:bg-white
+              ${menuOpen ? "rotate-45 translate-y-2" : ""}
+            `}
           />
           <span
-            className={`block w-6 h-0.5 bg-zinc-800 group-active:bg-[#43513e] group-hover:bg-[#7b8f72] mb-1 transition-all ${
-              menuOpen ? "opacity-0" : ""
-            }`}
+            className={`
+              block w-6 h-0.5 mb-1 transition-all
+             bg-zinc-800
+             group-active:bg-white
+             ${menuOpen ? "opacity-0" : ""}
+           `}
           />
           <span
-            className={`block w-6 h-0.5 bg-zinc-800 group-active:bg-[#43513e] group-hover:bg-[#7b8f72] transition-all ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`
+              block w-6 h-0.5 transition-all
+              bg-zinc-800
+              group-active:bg-white
+              ${menuOpen ? "-rotate-45 -translate-y-2" : ""}
+            `}
           />
         </button>
         <div className="hidden md:flex space-x-6">
           <Link
             href="/portfolio"
-            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/portfolio" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
+            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+              pathname === "/portfolio"
+                ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+                : ""
+            }`}
             onClick={(e) => handleNavClick(e, "/portfolio")}
           >
             Portfolio
           </Link>
           <Link
             href="/aboutme"
-            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/aboutme" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
+            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+              pathname === "/aboutme"
+                ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+                : ""
+            }`}
             onClick={(e) => handleNavClick(e, "/aboutme")}
           >
             About Me
           </Link>
           <Link
             href="/contact"
-            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/contact" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
+            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+              pathname === "/contact"
+                ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+                : ""
+            }`}
             onClick={(e) => handleNavClick(e, "/contact")}
           >
             Contact
@@ -90,38 +115,50 @@ export const Navbar = () => {
         </div>
       </div>
       {/* Mobile menu */}
-        <div
-          className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg flex flex-col items-center py-4 space-y-2 z-[10001] transition-all duration-300 origin-top"
-          style={{
-            opacity: menuOpen ? 1 : 0,
-            pointerEvents: menuOpen ? "auto" : "none",
-            transform: menuOpen ? "scaleY(1)" : "scaleY(0.8)",
-            maxHeight: menuOpen ? "400px" : "0px",
-            overflow: "hidden",
-          }}
+      <div
+        className="md:hidden absolute top-full left-0 w-full bg-white border-zinc-800 border-t-2 shadow-lg flex flex-col items-center py-4 space-y-2 z-[10001] transition-all duration-300 origin-top"
+        style={{
+          opacity: menuOpen ? 1 : 0,
+          pointerEvents: menuOpen ? "auto" : "none",
+          transform: menuOpen ? "scaleY(1)" : "scaleY(0.8)",
+          maxHeight: menuOpen ? "400px" : "0px",
+          overflow: "hidden",
+        }}
+      >
+        <Link
+          href="/portfolio"
+          className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+            pathname === "/portfolio"
+              ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+              : ""
+          }`}
+          onClick={(e) => handleNavClick(e, "/portfolio")}
         >
-          <Link
-            href="/portfolio"
-            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/portfolio" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
-            onClick={(e) => handleNavClick(e, "/portfolio")}
-          >
-            Portfolio
-          </Link>
-          <Link
-            href="/aboutme"
-            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/aboutme" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
-            onClick={(e) => handleNavClick(e, "/aboutme")}
-          >
-            About Me
-          </Link>
-          <Link
-            href="/contact"
-            className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${pathname === "/contact" ? "pointer-events-none cursor-default text-zinc-800 font-bold" : ""}`}
-            onClick={(e) => handleNavClick(e, "/contact")}
-          >
-            Contact
-          </Link>
-        </div>
+          Portfolio
+        </Link>
+        <Link
+          href="/aboutme"
+          className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+            pathname === "/aboutme"
+              ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+              : ""
+          }`}
+          onClick={(e) => handleNavClick(e, "/aboutme")}
+        >
+          About Me
+        </Link>
+        <Link
+          href="/contact"
+          className={`text-zinc-800 hover:text-[#7b8f72] active:text-[#43513e] navbar-link ${
+            pathname === "/contact"
+              ? "pointer-events-none cursor-default text-zinc-800 font-bold"
+              : ""
+          }`}
+          onClick={(e) => handleNavClick(e, "/contact")}
+        >
+          Contact
+        </Link>
+      </div>
     </nav>
   );
 };

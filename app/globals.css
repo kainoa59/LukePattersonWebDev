@@ -14,12 +14,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-main {
+.home-main {
   padding-top: var(--navbar-height, 64px);
 }
 
 @media (max-width: 767px) {
-  main {
+  .home-main {
     padding-top: 35px;
   }
 }

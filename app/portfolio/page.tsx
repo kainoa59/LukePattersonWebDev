@@ -10,6 +10,46 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+
+function MobileCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="block justify-center xl:hidden shadow-zinc-950/80 shadow-2xl rounded-lg bg-white/90">
+      <div className="flex items-center justify-between px-6 py-4 rounded-t-lg">
+        <span className="font-bold text-zinc-800 text-xl flex-1 text-center">
+          {title}
+        </span>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="text-zinc-800 font-bold text-lg focus:outline-none"
+          aria-label={open ? "Collapse" : "Expand"}
+        >
+          {open ? (
+            <ChevronUpIcon className="size-6" />
+          ) : (
+            <ChevronDownIcon className="size-6" />
+          )}
+        </button>
+      </div>
+      <div
+        className={`
+          transition-all duration-500 overflow-hidden
+          ${open ? " px-4 pb-4 max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}
+        `}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function PortfolioPage() {
   const [showCover, setShowCover] = useState(false);
@@ -101,7 +141,7 @@ export default function PortfolioPage() {
       <main>
         <div
           id="main-div"
-          className="w-full min-h-[60vh] bg-[#7b8f72] flex items-center justify-center mt-1 md:mt-6"
+          className="w-full min-h-[60vh] bg-[#7b8f72] flex items-center justify-center mt-[72px] md:mt-[64px]"
         >
           <div
             style={{
@@ -110,23 +150,67 @@ export default function PortfolioPage() {
             }}
             className="grid grid-cols-1 xl:grid-cols-2 gap-3 md:gap-5 lg:gap-7 p-6 md:p-10 lg:p-12 xl:p-14 2xl:p-16 xl:px-28 2xl:px-32 w-full"
           >
-            <Card className="shadow-zinc-950/80 shadow-2xl">
-              <CardHeader className="">
+            {/* C++ Robotics Card */}
+            {/* Mobile */}
+            <MobileCard title="C++ Robotics">
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col items-center w-full max-w-80 mx-auto">
+                    <video
+                      src="/videos/MutedBlocked.mp4"
+                      controls
+                      muted
+                      className="w-full h-auto rounded-lg shadow-zinc-950/80 shadow-lg"
+                    />
+                    <div className="mt-4 text-base text-zinc-800 text-center">
+                      Line Following and Object Avoidance
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center w-full max-w-80 mx-auto">
+                    <video
+                      src="/videos/MutedFinal.mp4"
+                      controls
+                      muted
+                      className="w-full h-auto rounded-lg shadow-zinc-950/80 shadow-lg"
+                    />
+                    <div className="mt-4 text-base text-zinc-800 text-center">
+                      Maze Solving and Object Collection
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 px-2">
+                  <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                    Watch the Pololu 3pi+32U4 robot in the first video as it
+                    uses lidar to detect color changes beneath it, and sonar to
+                    sense and avoid obstacles. The second video demonstrates an
+                    advanced version of this algorithm. Here the robot uses
+                    sonar sensors to maintain a threshold distance from the
+                    walls, odometric functions to determine distance traveled by
+                    each wheel and individually adjust speeds, and lidar to
+                    detect and &quot;collect&quot; objects. The robot is able to
+                    solve a maze and collect objects with a smooth correction
+                    behavior supported by its proportional, integral, and
+                    derivative controllers.
+                  </p>
+                </div>
+              </div>
+            </MobileCard>
+            {/* Desktop */}
+            <Card className="hidden xl:block shadow-zinc-950/80 shadow-2xl">
+              <CardHeader>
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
                   <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
                     C++ Robotics
                   </span>
                 </CardTitle>
                 <div
-                  className="flex flex-col xl:min-h-100 xl:max-h-150 gap-3 md:gap-5 lg:gap-7 xl:gap-10 sm:flex-row px-4"
+                  className="flex flex-col sm:flex-row xl:min-h-100 xl:max-h-150 gap-3 md:gap-5 lg:gap-7 xl:gap-10 px-4"
                   onMouseLeave={handleMouseLeave}
                 >
                   {(showBothVideos ||
                     hoveredIdx === null ||
                     hoveredIdx === 0) && (
-                    <div
-                      className={`transition-all duration-300 flex flex-col items-center sm:w-1/2 w-full max-w-80 mx-auto`}
-                    >
+                    <div className="transition-all duration-300 flex flex-col items-center sm:w-1/2 w-full max-w-80 mx-auto">
                       <video
                         ref={blockedRef}
                         src="/videos/MutedBlocked.mp4"
@@ -137,7 +221,7 @@ export default function PortfolioPage() {
                         className="w-full h-auto rounded-lg justify-self-center shadow-zinc-950/80 shadow-lg"
                         onMouseEnter={() => handleMouseEnter(0)}
                       />
-                      <CardDescription className="mt-6 mb-16 sm:mb-6 pt-2 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                      <CardDescription className="mt-6 mb-6 pt-2 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
                         Line Following and Object Avoidance
                       </CardDescription>
                     </div>
@@ -145,9 +229,7 @@ export default function PortfolioPage() {
                   {(showBothVideos ||
                     hoveredIdx === null ||
                     hoveredIdx === 1) && (
-                    <div
-                      className={`transition-all duration-300 flex flex-col items-center w-full sm:w-1/2 max-w-80 mx-auto`}
-                    >
+                    <div className="transition-all duration-300 flex flex-col items-center w-full sm:w-1/2 max-w-80 mx-auto">
                       <video
                         ref={finalRef}
                         src="/videos/MutedFinal.mp4"
@@ -159,13 +241,12 @@ export default function PortfolioPage() {
                         className="w-full h-auto rounded-lg justify-self-center shadow-zinc-950/80 shadow-lg"
                         onMouseEnter={() => handleMouseEnter(1)}
                       />
-                      <CardDescription className="mt-6 mb-16 sm:mb-6 pt-2 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                      <CardDescription className="mt-6 mb-6 pt-2 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
                         Maze Solving and Object Collection
                       </CardDescription>
                     </div>
                   )}
                 </div>
-                {/* <CardAction>Action</CardAction> */}
               </CardHeader>
               <CardContent className="mt-auto">
                 <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
@@ -183,7 +264,51 @@ export default function PortfolioPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="shadow-zinc-950/80 shadow-2xl">
+
+            {/* Repeat the same pattern for other cards... */}
+
+            {/* Web Development Card */}
+            <MobileCard title="Web Development">
+              <div className="flex flex-col gap-3">
+                <div
+                  className="relative w-full min-w-70 md:min-w-130"
+                  style={{ height: videoHeight ? `${videoHeight}px` : "200px" }}
+                >
+                  <Image
+                    src="/images/DahliaImage.png"
+                    alt="Dahlia Image"
+                    fill
+                    className="object-contain shadow-zinc-950/80 shadow-lg"
+                    sizes="1280px"
+                  />
+                </div>
+                <div className="mt-4 text-base text-zinc-800 text-center">
+                  <a
+                    href="https://dahliacoastallivinginib.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Dahlia Coastal Living in Imperial Beach
+                  </a>
+                </div>
+                <div className="mt-4 px-2">
+                  <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                    Explore DahliaCoastalLivingInIB.com, a custom-built site
+                    showcasing coastal-inspired duplexes and amenities. It
+                    combines responsive design, Bootstrap components, React
+                    functionality, and lightweight animations for smooth,
+                    cross-device interactions. The site features product
+                    listings coded simply enough for the site owner to maintain,
+                    interactive hover effects, gradient color schemes, and a
+                    cohesive color palette reflecting the complex’s serene
+                    aesthetic. Designed with accessibility and simplicity in
+                    mind, it ensures a modern yet user-friendly experience,
+                    while emphasizing accessibility for elderly visitors.
+                  </p>
+                </div>
+              </div>
+            </MobileCard>
+            <Card className="hidden xl:block shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
                   <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
@@ -202,7 +327,7 @@ export default function PortfolioPage() {
                     sizes="1280px"
                   />
                 </div>
-                <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                <CardDescription className="mt-6 mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
                   <a
                     href="https://dahliacoastallivinginib.com"
                     target="_blank"
@@ -228,7 +353,42 @@ export default function PortfolioPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="shadow-zinc-950/80 shadow-2xl">
+
+            {/* Virtualization Card */}
+            <MobileCard title="Virtualization">
+              <div className="flex flex-col gap-3">
+                <div className="relative w-full min-w-70 md:min-w-130 aspect-[4/3]">
+                  <Image
+                    src="/images/FreeBSDImage.png"
+                    alt="FreeBSD Image"
+                    fill
+                    className="object-contain w-full max-w-100 md:max-w-500 lg:max-w-200 xl:max-w-100 2xl:max-w-150 align-middle justify-self-center shadow-zinc-950/80 shadow-lg"
+                    sizes="1280px"
+                  />
+                </div>
+                <div className="mt-4 text-base text-zinc-800 text-center">
+                  FreeBSD startup
+                </div>
+                <div className="mt-4 px-2">
+                  <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                    Here I built and managed a suite of virtual machines across
+                    OpenBSD, FreeBSD, Rocky Linux, Ubuntu, and Solaris
+                    (OpenIndiana) using VMware Fusion. The labs focused on
+                    configuring host-to-guest networking, SSH remote access, log
+                    management, and service automation. I implemented an
+                    Ansible-controlled environment to manage roles and packages
+                    across systems, and used my Ubuntu VMs as jump hosts for
+                    interacting with Proxmox and Azure deployments. Each VM was
+                    configured with strict user-level permissions, and system
+                    logs and cron job reports were routed through FreeBSD’s
+                    Sendmail service. These labs deepened my understanding of
+                    cross-platform administration, virtualization workflows, and
+                    secure remote orchestration.
+                  </p>
+                </div>
+              </div>
+            </MobileCard>
+            <Card className="hidden xl:block shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
                   <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
@@ -244,7 +404,7 @@ export default function PortfolioPage() {
                     sizes="1280px"
                   />
                 </div>
-                <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                <CardDescription className="mt-6 mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
                   FreeBSD startup
                 </CardDescription>
               </CardHeader>
@@ -266,7 +426,55 @@ export default function PortfolioPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="shadow-zinc-950/80 shadow-2xl">
+
+            {/* 3D Game Programming Card */}
+            <MobileCard title="3D Game Programming">
+              <div className="flex flex-col gap-3">
+                <div className="relative w-full min-w-70 md:min-w-130 aspect-[4/3]">
+                  {!showGameVideo ? (
+                    <Image
+                      src="/images/3DGameImage.png"
+                      alt="3DGame Image"
+                      fill
+                      className="object-contain w-full max-w-100 md:max-w-500 lg:max-w-200 xl:max-w-100 2xl:max-w-150 align-middle justify-self-center shadow-zinc-950/80 shadow-lg"
+                      sizes="1280px"
+                    />
+                  ) : (
+                    <video
+                      ref={gameVideoRef}
+                      src="/videos/3DGameVideo720.mov"
+                      controls
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      className="object-contain w-full max-w-100 md:max-w-500 lg:max-w-200 xl:max-w-100 2xl:max-w-150 align-middle justify-self-center shadow-zinc-950/80 shadow-lg"
+                    />
+                  )}
+                </div>
+                <div className="mt-4 text-base text-zinc-800 text-center">
+                  Ball Maze created with Unity
+                </div>
+                <div className="mt-4 px-2">
+                  <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
+                    In this project, my team developed a 3D physics-based ball
+                    game using Unity and C#. Players navigate a rolling ball
+                    through a series of obstacles and platforms to collect items
+                    and reach the end goal. The game features real-time physics
+                    interactions, trigger-based events, and smooth camera
+                    controls to enhance playability. I implemented UI elements
+                    for score tracking and level transitions, and designed each
+                    level to test precision movement and player timing.
+                    Throughout the project, we used GitHub for version control,
+                    regularly merging branches, resolving conflicts, and
+                    coordinating feature development across the team. This
+                    experience strengthened my grasp of debugging, version
+                    control, and game-based physics models.
+                  </p>
+                </div>
+              </div>
+            </MobileCard>
+            <Card className="hidden xl:block shadow-zinc-950/80 shadow-2xl">
               <CardHeader className="justify-center">
                 <CardTitle className="mt-2 mb-4 sm:mb-6 text-zinc-800 text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-lg 2xl:text-xl text-center">
                   <span className="text-zinc-800 inline-block pb-4 px-20 border-b">
@@ -311,7 +519,7 @@ export default function PortfolioPage() {
                     />
                   )}
                 </div>
-                <CardDescription className="mt-6 mb-16 sm:mt-6 sm:mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
+                <CardDescription className="mt-6 mb-6 justify-self-center text-base sm:text-sm lg:text-lg xl:text-xs 2xl:text-md">
                   Ball Maze created with Unity
                 </CardDescription>
               </CardHeader>
@@ -335,7 +543,6 @@ export default function PortfolioPage() {
             </Card>
           </div>
         </div>
-        {/* Portfolio content here */}
       </main>
     </>
   );
