@@ -248,7 +248,7 @@ export default function PortfolioPage() {
                   )}
                 </div>
               </CardHeader>
-              <CardContent className="mt-auto">
+              <CardContent className="mt-auto 2xl:mt-8">
                 <p className="indent-8 text-justify text-zinc-800 shadow-[inset_0_10px_10px_-10px_#09090b80,inset_0_-10px_10px_-10px_#09090b80] px-4 py-4 -mt-4 border-t border-b border-t-zinc-500 border-b-zinc-900">
                   Watch the Pololu 3pi+32U4 robot in the first video as it uses
                   lidar to detect color changes beneath it, and sonar to sense
