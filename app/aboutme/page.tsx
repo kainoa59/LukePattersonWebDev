@@ -116,7 +116,7 @@ export default function PortfolioPage() {
                 Profile:
               </h1>
               <p className="flex w-full text-white text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem] px-2 md:px-12 xl:px-24 mb-4">
-                <span className="block border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
+                <span className="block indent-8 border-l-2 px-6 sm:px-12 border-[#a3b18a]/40">
                   Full-stack web developer and Honors Computer Science graduate
                   with experience in React (Next.js), Node.js,
                   Tailwind/Bootstrap, and various SQL and NoSQL DBMS. Over two
@@ -228,7 +228,7 @@ export default function PortfolioPage() {
                   <li>
                     Integrated Vercel deployment via GitHub for global
                     accessibility and version control.
-                  </li>H
+                  </li>
                 </ul>
               </span>
               <span className="block border-b-2 border-r-2 border-zinc-950/20 shadow-md px-2 sm:px-6 mb-4 sm:mb-8 mx-0 sm:mx-4 lg:mx-10">
