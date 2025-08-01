@@ -19,17 +19,17 @@ export const Navbar = () => {
     }
   }, []);
 
-  // Handler for delayed navigation
+  // delayed navigation
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     href: string
   ) => {
     e.preventDefault();
-    setMenuOpen(false); // Close the menu on click
+    setMenuOpen(false); // close the menu on click
     if (href !== window.location.pathname) {
       setTimeout(() => {
         router.push(href);
-      }, 1000); // 1.2 seconds
+      }, 1000);
     }
   };
 
@@ -47,7 +47,7 @@ export const Navbar = () => {
         >
           Welcome
         </Link>
-        {/* Hamburger for mobile */}
+        {/* hamburger for mobile */}
         <button
           className="md:hidden flex flex-col group justify-center items-center w-8 h-8"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -114,7 +114,7 @@ export const Navbar = () => {
           </Link>
         </div>
       </div>
-      {/* Mobile menu */}
+      {/* mobile menu */}
       <div
         className="md:hidden absolute top-full left-0 w-full bg-white border-zinc-800 border-t-2 shadow-lg flex flex-col items-center py-4 space-y-2 z-[10001] transition-all duration-300 origin-top"
         style={{

@@ -24,18 +24,6 @@ body {
   }
 }
 
-/* .text-outline-white {
-  text-shadow:
-    1px 1px 0 #7b8f72,
-    -1px 1px 0 #7b8f72,
-    1px -1px 0 #7b8f72,
-    -1px -1px 0 #7b8f72,
-    1px 0px 0 #7b8f72,
-    0px 1px 0 #7b8f72,
-    -1px 0px 0 #7b8f72,
-    0px -1px 0 #7b8f72;
-} */
-
 .fade-edges::before {
   content: "";
   position: absolute;
@@ -45,7 +33,6 @@ body {
 }
 
 .fade-edges img {
-  /* fades on all four edges */
   mask-image: linear-gradient(
       to right,
       transparent 0%,
@@ -215,13 +202,13 @@ body {
 }
 
 @layer base {
-  /* Set border and outline defaults for all elements */
+  /* border and outline defaults for all elements */
   * {
     border-color: var(--border);
     outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
   }
 
-  /* Set background and text color for body */
+  /* background and text color for body */
   body {
     background: var(--background);
     color: var(--foreground);

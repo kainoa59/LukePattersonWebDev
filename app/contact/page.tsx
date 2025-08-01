@@ -1,5 +1,3 @@
-// BASIC STYLING FOR THIS IS APPLIED THROUGHOUT ALL TSX FILES OTHER THAN HOME PAGE
-
 "use client";
 import { useEffect, useState } from "react";
 import PageTransition from "@/components/PageTransition";

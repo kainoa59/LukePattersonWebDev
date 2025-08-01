@@ -13,13 +13,13 @@ export default function PortfolioPage() {
   // chevron state for autoscroll
   const [chevronActive, setChevronActive] = useState(false);
 
-  // Trigger fade-in after mount
+  // fade-in after mount
   useEffect(() => {
     const timeout = setTimeout(() => setFadeIn(true), 50);
     return () => clearTimeout(timeout);
   }, []);
 
-  // Handle clicks on navbar links to show cover transition
+  // handle clicks on navbar links to show cover transition
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -52,7 +52,7 @@ export default function PortfolioPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Auto scroll function
+  // auto scroll function
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       const scrollY = window.scrollY;
@@ -83,7 +83,6 @@ export default function PortfolioPage() {
           className="w-full min-h-[200vh] bg-[#7b8f72] flex flex-col items-center justify-between p-2 sm:p-6 mt-[72px] md:mt-[64px]"
           style={{
             opacity: fadeIn ? 1 : 0,
-            // fade-in effect
             transition: "opacity 1.5s cubic-bezier(.77,0,.18,1)",
           }}
         >
@@ -179,7 +178,7 @@ export default function PortfolioPage() {
                       top: document.body.scrollHeight,
                       behavior: "smooth",
                     });
-                    setTimeout(() => setChevronActive(false), 300); // Remove highlight after 0.6s
+                    setTimeout(() => setChevronActive(false), 300); 
                   }}
                 />
               </div>
@@ -300,9 +299,7 @@ export default function PortfolioPage() {
             </div>
             <hr className="border-t-2 border-[#a3b18a]/40 w-full max-w-[200px] sm:max-w-sm xl:max-w-3xl" />
           </div>
-          {/* <div className="w-full h-32"></div> */}
         </div>
-        {/* Portfolio here */}
       </main>
     </>
   );

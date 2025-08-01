@@ -8,14 +8,13 @@ export default function CoverPageTransition() {
   useEffect(() => {
     setExpanded(true);
 
-    // Fade out the first <main> element
+    // fade out the first <main> element
     const main = document.querySelector("main");
     if (main) {
       main.style.transition = "opacity 1s cubic-bezier(.77,0,.18,1)";
       main.style.opacity = "0";
     }
 
-    // Optional: Clean up by restoring opacity when unmounted
     return () => {
       if (main) {
         main.style.transition = "";

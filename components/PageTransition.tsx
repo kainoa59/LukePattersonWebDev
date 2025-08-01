@@ -2,17 +2,17 @@
 import { useEffect, useState } from "react";
 
 /**
- * PageTransition overlays a full-screen green div that slides down to reveal the page.
- * Place <PageTransition /> at the top of your page component.
+  PageTransition overlays a full-screen green div that slides down to reveal the page
+  Place <PageTransition /> at the top of all page components
  */
 export default function PageTransition() {
   const [visible, setVisible] = useState(true);
   const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
-    // Start the slide-down animation after mount
-    const hideTimeout = setTimeout(() => setVisible(false), 50); // Start animation after mount
-    const unmountTimeout = setTimeout(() => setShouldRender(false), 1000); // Wait for animation to finish
+    // start the slide-down animation after mount
+    const hideTimeout = setTimeout(() => setVisible(false), 50);
+    const unmountTimeout = setTimeout(() => setShouldRender(false), 1000); // wait for animation to finish
     return () => {
       clearTimeout(hideTimeout);
       clearTimeout(unmountTimeout);

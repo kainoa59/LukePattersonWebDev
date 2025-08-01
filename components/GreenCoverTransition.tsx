@@ -13,11 +13,11 @@ export default function GreenCoverTransition({
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     if (expandUp) {
-      // Animate from FINAL_HEIGHT to 100vh (expand up)
+      // animate from FINAL_HEIGHT to 100vh (expand up)
       setCoverAnim(true);
       timeout = setTimeout(() => setCoverAnim(false), 1200);
     } else {
-      // Animate from 100vh to FINAL_HEIGHT (cover down)
+      // animate from 100vh to FINAL_HEIGHT (cover down)
       timeout = setTimeout(() => setCoverAnim(false), 100);
     }
     return () => clearTimeout(timeout);

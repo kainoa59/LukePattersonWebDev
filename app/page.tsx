@@ -25,7 +25,7 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [scrollRange, setScrollRange] = useState(0);
 
-  // mobile detection
+  // mobile detection ref
   const [isMobile, setIsMobile] = useState(false);
 
   // detect if the viewport is mobile
@@ -40,9 +40,9 @@ export default function Home() {
     setRedirectPath(targetPath);
     if (greenRef.current) {
       const rect = greenRef.current.getBoundingClientRect();
-      const extraMobileMargin = isMobile ? 16 : 0; // 16px = Tailwind's mb-4
+      const extraMobileMargin = isMobile ? 16 : 0; 
       setGreenTop(rect.top);
-      setGreenHeight(rect.height + extraMobileMargin); // Include extra spacing
+      setGreenHeight(rect.height + extraMobileMargin); 
       setGreenLeft(rect.left);
       setGreenWidth(rect.width);
       setCovering(true);
@@ -51,7 +51,7 @@ export default function Home() {
     }
   };
 
-  // triggers horizontal expansion after phase 1 starts
+  // horizontal expansion after phase 1 starts
   useEffect(() => {
     if (covering && phase === 1 && !phase1Started) {
       requestAnimationFrame(() => setPhase1Started(true));
@@ -97,7 +97,7 @@ export default function Home() {
     updateScrollRange();
     window.addEventListener("resize", updateScrollRange);
 
-    // Force update after paint to fix overlay animation on load
+    // force update after paint to fix overlay animation on load
     const timeout = setTimeout(updateScrollRange, 500);
 
     const handleScroll = () => setScrollY(window.scrollY);
@@ -176,11 +176,7 @@ export default function Home() {
       };
     }
   }
-
-  // animate marginTop and height together for green section
   const animatedMarginTop = barAndGreenProgress * 72;
-  // const animatedHeight = `calc(60vh - ${animatedMarginTop}px)`;
-
   return (
     <>
       <PageTransition />

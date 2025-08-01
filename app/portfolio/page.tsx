@@ -64,15 +64,15 @@ export default function PortfolioPage() {
   const [showGameVideo, setShowGameVideo] = useState(false);
   const gameVideoRef = useRef<HTMLVideoElement>(null);
 
-  // Store the dynamic height of the video
+  // dynamic height of the video
   const [videoHeight, setVideoHeight] = useState<number | null>(null);
 
-  // Helper to check if screen is mobile
+  // check if screen is mobile
   const isMobile = () =>
     typeof window !== "undefined" && window.innerWidth < 640;
 
   useEffect(() => {
-    // Trigger fade-in after mount
+    // fade-in after mount
     const timeout = setTimeout(() => setFadeIn(true), 50);
     return () => clearTimeout(timeout);
   }, []);
@@ -89,7 +89,7 @@ export default function PortfolioPage() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  // Pause and reset video on mouse leave (desktop only)
+  // pause and reset video on mouse leave (desktop only)
   const handleMouseLeave = () => {
     if (!isMobile()) {
       if (hoveredIdx === 0 && blockedRef.current) {
@@ -104,16 +104,16 @@ export default function PortfolioPage() {
     }
   };
 
-  // Only enable hover on desktop
+  // only enable hover on desktop
   const handleMouseEnter = (idx: number) => {
     if (!isMobile()) setHoveredIdx(idx);
   };
 
-  // On mobile, always show both videos, no hover
+  // on mobile, always show both videos, no hover
   const showBothVideos =
     typeof window !== "undefined" && window.innerWidth < 640;
 
-  // Dynamically measure the height of the first video
+  // measure the height of the first video
   useEffect(() => {
     function updateHeight() {
       if (blockedRef.current) {
@@ -265,7 +265,7 @@ export default function PortfolioPage() {
               </CardContent>
             </Card>
 
-            {/* Repeat the same pattern for other cards... */}
+            {/* repeat pattern for other cards... */}
 
             {/* Web Development Card */}
             <MobileCard title="Web Development">
